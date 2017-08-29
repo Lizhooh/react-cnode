@@ -1,0 +1,17 @@
+
+
+
+@mixin media($width: 480px) {
+    @media screen and (max-width: $width) {
+        @content;
+    }
+}
+
+$theme-color: rgba(69, 200, 62, 1);
+
+$accentColor: #f43;
+$font-code: 'Consolas', 'Courier New', 'monospace', '微软雅黑';
+$font-default: 'Segoe UI', '微软雅黑', Tahoma, Geneva, Verdana, sans-serif;
+$font-size: 15px;
+
+

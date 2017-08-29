@@ -1,0 +1,98 @@
+.home-container {
+    min-height: 500px;
+
+    .header-container {
+        height: 360px;
+        display: flex;
+
+        .header {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(1, 1, 1, 0.35);
+            text-align: center;
+
+            img.logo {
+                max-width: 240px;
+            }
+
+            .title {
+                text-align: center;
+                color: #f6f6f6;
+                font-size: 36px;
+            }
+        }
+    }
+
+    .body {
+        transform: translateY(-100px);
+        width: 100%;
+        max-width: 960px;
+        min-width: 360px;
+        min-height: 800px;
+        background-color: #fff;
+        margin: 0 auto;
+        box-shadow: 0 10px 20px rgba(1, 1, 1, 0.18);
+        z-index: 2;
+        border-radius: 2px;
+        padding: 0 0 20px;
+        @include media(480px) {
+            & {
+                box-shadow: none;
+            }
+        }
+    }
+
+    .tags {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        cursor: default;
+        background-color: #fff;
+
+        & > div {
+            flex: 1;
+            text-align: center;
+            padding: 16px 0;
+
+            &:hover {
+                background-color: rgba(1, 1, 1, 0.07);
+            }
+        }
+
+        .active {
+            background-color: rgba(1, 1, 1, 0.07);
+        }
+    }
+
+    .tags.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+    }
+
+    .next-view {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        padding: 5px 20px 0;
+
+        > button {
+            padding: 6px 16px;
+            font-size: 13px;
+            line-height: 1.2;
+            text-align: center;
+            vertical-align: center;
+            transition: all .3s ease;
+            margin-left: 15px;
+
+            &:hover {
+                background-color: #39f;
+                box-shadow: 0 5px 8px #37f;
+            }
+        }
+    }
+}
