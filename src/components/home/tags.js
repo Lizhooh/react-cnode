@@ -7,11 +7,11 @@ export default class Tags extends Component {
         this.state = {
             active: this.props.initActive,
             tags: [
-                { name: '全部', tag: 'all' },
-                { name: '精华', tag: 'good' },
-                { name: '问答', tag: 'ask' },
-                { name: '分享', tag: 'share' },
-                { name: '招聘', tag: 'job' },
+                { name: '全部', tag: 'all', icon: '' },
+                { name: '精华', tag: 'good', icon: '' },
+                { name: '问答', tag: 'ask', icon: '' },
+                { name: '分享', tag: 'share', icon: '' },
+                { name: '招聘', tag: 'job', icon: '' },
             ],
         }
     }
@@ -33,7 +33,8 @@ export default class Tags extends Component {
                         onClick={e => this.onSelectTag(item, index)}
                         key={`tag-${index}`}
                         className={active === index && 'active'}
-                        >{item.name}
+                        >
+                        {item.name}
                     </div>
                 ))
             }</div>

@@ -82,7 +82,6 @@ button {
 ::-webkit-scrollbar-thumb:horizontal:hover {
     background: #39f;
 }
-
 /////////////////////////////////////////////////
 @import '_highlight';
 @import '_nprogress';
@@ -90,3 +89,5 @@ button {
 @import '_home';
 @import '_list';
 @import '_fixed-buttons';
+@import '_editor';
+@import '_simplemde';

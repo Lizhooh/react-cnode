@@ -1,7 +1,8 @@
 import { ARTICLE } from '../types';
 
 const init_state = {
-    data: {}
+    data: {},
+    id: 0,
 }
 
 
@@ -11,6 +12,7 @@ export default (state = init_state, action) => {
         case ARTICLE.init_success: return {
             ...state,
             data: action.data,
+            id: action.id,
         }
 
         default: return state;

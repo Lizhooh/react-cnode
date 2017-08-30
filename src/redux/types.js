@@ -14,6 +14,7 @@ const extendState = (obj) => {
 export const HOME = extendState({
     init: 'HOME_init',              // 初始化
     more: 'HOME_more',              // 更多
+    next: 'HOME_next',              // next
     restore: 'HOME_restore',        // 恢复
     scrollindex: 'HOME_scrollindex',
 });

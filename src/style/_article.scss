@@ -72,6 +72,7 @@
             }
 
             img {
+                display: block;
                 text-align: center;
                 max-width: 100%;
                 border-radius: 2px;
@@ -298,7 +299,7 @@
                 border: 1px solid #eee;
                 border-radius: 2px;
                 word-wrap: break-word;
-                font-weight: bold !important;
+                // font-weight: bold !important;
             }
 
             pre {
@@ -346,7 +347,10 @@
         }
 
         img {
-            width: 100%;
+            max-width: 100%;
+            border-radius: 2px;
+            box-shadow: 2px 3px 2px #ddd;
+            margin: 5px 0;
         }
 
         .title {
@@ -385,6 +389,7 @@
                 background-color: #555;
                 color: #fff;
                 padding: 12px;
+                box-shadow: 0 0 5px #222 inset;
 
                 > code {
                     font-family: $font-code;
@@ -439,6 +444,10 @@
         }
     }
 
+    .comment-editor-container {
+        @extend .comment-container;
+    }
+
     .back {
         position: fixed;
         left: 20px;
@@ -466,4 +475,6 @@
             background-color: darken($theme-color, 15%);
         }
     }
+
 }
+

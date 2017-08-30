@@ -1,0 +1,18 @@
+.editor-container {
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+
+    .editor {
+        outline: none;
+        font-family: $font-code;
+        font-size: $font-size;
+
+        .CodeMirror-wrap,
+        .editor-statusbar,
+        .editor-toolbar {
+            border-radius: 0;
+        }
+    }
+}
+

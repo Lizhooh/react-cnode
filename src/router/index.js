@@ -12,7 +12,6 @@ import Home from '../views/home';
 import Article from '../views/article';
 import NotFound from '../views/notfound';
 
-
 export default class App extends Component {
 
     constructor(props) {

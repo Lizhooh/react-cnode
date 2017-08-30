@@ -1,5 +1,3 @@
-// import fetch from 'whatwg-fetch';
-import fetch from 'isomorphic-fetch';
 import { nprogress } from '../../functions';
 
 function parse(query) {
@@ -19,7 +17,6 @@ function parse(query) {
  */
 const _http = (method, url, { query = {}, data = {} } = {}) => {
     nprogress.start().set(0.5);
-
     url += '?' + parse(query);
 
     return fetch(url, {

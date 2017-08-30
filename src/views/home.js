@@ -7,7 +7,7 @@ import { homeActions } from '../redux/actions';
 import { connect } from 'react-redux';
 import { scrollInfo as s } from '../functions';
 
-
+// 首页
 class Home extends Component {
 
     constructor(props) {
@@ -19,7 +19,9 @@ class Home extends Component {
 
     onScroll = e => {
         // 加载更多
-        if (s.t() + s.h() >= 0.8 * s.H() && this.loading === false) {
+        if (s.t() + s.h() >= 0.8 * s.H()
+            && this.loading === false
+            && !this.props.state.showNext) {
             this.onMore();
         }
     }
@@ -30,24 +32,19 @@ class Home extends Component {
 
     async componentDidMount() {
         this.loading = true;
-        await this.props.init();
+        await this.props.init()
         // 回到过去
-        document.documentElement.scrollTop =
         document.body.scrollTop = this.props.state.scrollIndex;
         this.loading = false;
     }
 
-    onSelectTag = async (item, index) => {
-        if (s.t() > 260) {
-            document.documentElement.scrollTop =
-            document.body.scrollTop = 260;
-        }
-        await this.props.init(item.tag, index);
+    onSelectTag = (item, index) => {
+        this.props.init(item.tag, index);
     }
 
     onMore = async () => {
         this.loading = true;
-        await this.props.more();
+        await this.props.more()
         this.loading = false;
     }
 
@@ -57,8 +54,13 @@ class Home extends Component {
         this.props.history.push(`/article/${item.id}`);
     }
 
+    onNext = e => {
+        document.body.scrollTop = 0;
+        this.props.next();
+    }
+
     render() {
-        const { list = [], active } = this.props.state;
+        const { list = [], active, showNext } = this.props.state;
 
         return (
             <div className='home-container'>
@@ -67,10 +69,11 @@ class Home extends Component {
                     <Tags className='tags' onSelectTag={this.onSelectTag} initActive={active} />
                     <List data={list} onClick={this.onClick} />
 
-                    <div className='next-view'>
-                        <button>上一页</button>
-                        <button>下一页</button>
-                    </div>
+                    {showNext &&
+                        <div className='next-view'>
+                            <button onClick={this.onNext}>下一页</button>
+                        </div>
+                    }
                 </div>
                 <FixedButtons />
             </div>

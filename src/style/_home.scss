@@ -50,11 +50,17 @@
         justify-content: space-around;
         cursor: default;
         background-color: #fff;
+        align-items: center;
 
         & > div {
             flex: 1;
             text-align: center;
             padding: 16px 0;
+            @include media(480px) {
+                & {
+                    padding: 12px 0;
+                }
+            }
 
             &:hover {
                 background-color: rgba(1, 1, 1, 0.07);
@@ -64,14 +70,14 @@
         .active {
             background-color: rgba(1, 1, 1, 0.07);
         }
-    }
 
-    .tags.fixed {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 10;
+        .tag-icon {
+            font-size: 20px;
+            color: #555;
+            position: relative;
+            top: 4px;
+            right: 4px;
+        }
     }
 
     .next-view {
@@ -79,6 +85,11 @@
         flex-direction: row;
         justify-content: flex-end;
         padding: 5px 20px 0;
+        @include media(480px) {
+            & {
+                justify-content: center;
+            }
+        }
 
         > button {
             padding: 6px 16px;
@@ -87,11 +98,11 @@
             text-align: center;
             vertical-align: center;
             transition: all .3s ease;
-            margin-left: 15px;
+            margin: 0 15px;
 
             &:hover {
-                background-color: #39f;
-                box-shadow: 0 5px 8px #37f;
+                background-color: darken($theme-color, 3%);
+                box-shadow: 0 5px 8px darken($theme-color, 10%);
             }
         }
     }

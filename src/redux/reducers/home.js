@@ -7,6 +7,7 @@ const init_state = {
     scrollIndex: 0,             // 记录滚动条位置
     restore: false,
     active: 0,
+    showNext: false,            // 下一页
 }
 
 export default (state = init_state, action) => {
@@ -19,7 +20,7 @@ export default (state = init_state, action) => {
             tag: action.tag,
             scrollIndex: 0,
             restore: false,
-            active: action.active,
+            active: action.active || state.active,
         }
 
         case HOME.more_success: return {
@@ -27,6 +28,14 @@ export default (state = init_state, action) => {
             list: [...state.list, ...action.list],
             page: state.page + 1,
             restore: false,
+            showNext: action.next || state.showNext,
+        }
+
+        case HOME.next_success: return {
+            ...state,
+            list: action.list,
+            page: state.page + 1,
+            showNext: action.next,
         }
 
         case HOME.scrollindex_success: return {

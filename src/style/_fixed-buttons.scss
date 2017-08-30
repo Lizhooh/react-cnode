@@ -3,6 +3,7 @@
     right: 30px;
     top: calc(100% - 180px);
     background-color: transparent;
+    z-index: 1000;
     @include media(480px) {
         & {
             right: 12px;
