@@ -45,7 +45,8 @@ export default class ReactSimplemde extends Component {
 
         const initialOptions = {
             element: document.getElementById(this.id),
-            initialValue: this.props.value
+            initialValue: this.props.value,
+            placeholder: this.props.placeholder,
         };
 
         const allOptions = Object.assign({}, initialOptions, this.props.options);

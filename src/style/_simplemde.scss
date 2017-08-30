@@ -466,7 +466,7 @@ span.CodeMirror-selectedtext {
     right: 0;
     bottom: 0;
     height: auto;
-    z-index: 9;
+    z-index: 999;
 }
 
 .CodeMirror-sided {
@@ -525,7 +525,7 @@ span.CodeMirror-selectedtext {
     top: 0;
     left: 0;
     opacity: 1;
-    z-index: 9;
+    z-index: 999;
 }
 
 .editor-toolbar.fullscreen::before {
@@ -682,7 +682,7 @@ span.CodeMirror-selectedtext {
     width: 50%;
     top: 50px;
     right: 0;
-    z-index: 9;
+    z-index: 999;
     border: 1px solid #ddd;
 }
 

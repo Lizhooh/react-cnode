@@ -1,93 +1,14 @@
-@import '_variable.scss';
+@import '_variable.scss';  // 默认变量
 
-body {
-    margin: 0;
-    padding: 0;
-    font-family: $font-default;
-    background-color: #f4f4f4;
-    font-size: 15px;
-    color: #222;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    position: relative;
-}
 
-a {
-    text-decoration: none;
-    outline: none;
-
-    &:hover {
-        color: #f44;
-    }
-}
-
-a:focus,
-div:focus,
-input:focus,
-p:focus {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    // -webkit-user-modify: read-write-plaintext-only;
-}
-
-a:-webkit-any-link {
-    font-weight: normal;
-    color: #f45;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-::selection {
-    background: rgba(1, 1, 1, 0.13);
-}
-
-button {
-    border: none;
-    font-family: $font-default;
-    background-color: $theme-color;
-    color: #fff;
-    padding: 8px 16px;
-    border-radius: 3px;
-    outline: none;
-    cursor: pointer;
-}
-
-::-webkit-scrollbar {
-    width: 7px;
-    height: 7px;
-    @include media(480px) {
-        & {
-            width: 3px;
-            height: 3px;
-        }
-    }
-}
-
-::-webkit-scrollbar-track-piece {
-    background-color: #555;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #3bf;
-    min-height: 150px;
-    max-height: 400px;
-    min-width: 150px;
-    max-width: 400px;
-}
-
-::-webkit-scrollbar-thumb:vertical:hover {
-    background: #39f;
-}
-
-::-webkit-scrollbar-thumb:horizontal:hover {
-    background: #39f;
-}
 /////////////////////////////////////////////////
+@import '_main';
+@import '_markdown';       // markdown 样式
 @import '_highlight';
 @import '_nprogress';
 @import '_article';
 @import '_home';
-@import '_list';
-@import '_fixed-buttons';
+@import '_list';           // 主题列表
+@import '_fixed-buttons';  // 右边的浮动按钮
 @import '_editor';
 @import '_simplemde';

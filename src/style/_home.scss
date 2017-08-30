@@ -28,9 +28,9 @@
     .body {
         transform: translateY(-100px);
         width: 100%;
-        max-width: 960px;
-        min-width: 360px;
-        min-height: 800px;
+        max-width: $home-body-max-width;
+        min-width: $home-body-min-width;
+        min-height: $home-body-min-height;
         background-color: #fff;
         margin: 0 auto;
         box-shadow: 0 10px 20px rgba(1, 1, 1, 0.18);

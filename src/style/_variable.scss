@@ -1,13 +1,20 @@
 
-
-
 @mixin media($width: 480px) {
     @media screen and (max-width: $width) {
         @content;
     }
 }
 
-$theme-color: rgba(69, 200, 62, 1);
+$home-body-max-width: 960px;
+$home-body-min-width: 360px;
+$home-body-min-height: 800px;
+
+$article-body-max-width: 900px;
+$article-body-min-width: 360px;
+
+// $theme-color: rgba(69, 200, 62, 1);
+// $theme-color: rgba(30, 160, 252, 1);
+$theme-color: rgba(255, 195, 40, 0.95);
 
 $accentColor: #f43;
 $font-code: 'Consolas', 'Courier New', 'monospace', '微软雅黑';

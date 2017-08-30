@@ -10,8 +10,8 @@
 
     .article {
         width: 100%;
-        max-width: 900px;
-        min-width: 360px;
+        max-width: $article-body-max-width;
+        min-width: $article-body-min-width;
         background-color: #fff;
         margin: 0 auto;
         box-shadow: 0 10px 20px rgba(1, 1, 1, 0.18);
@@ -61,246 +61,7 @@
                     padding: 15px;
                 }
             }
-
-            * {
-                word-break: break-all;
-            }
-
-            hr {
-                color: #ccc;
-                background-color: #ccc;
-            }
-
-            img {
-                display: block;
-                text-align: center;
-                max-width: 100%;
-                border-radius: 2px;
-                box-shadow: 2px 3px 2px #ddd;
-                margin: 5px 0;
-            }
-
-             > .highlight,
-             > pre,
-            > .image-bubble {
-                margin-left: -35px;
-                margin-right: -35px;
-            }
-
-             > .highlight,
-            > pre {
-                padding: 15px 35px;
-            }
-
-            li,
-            p {
-                max-width: 100%;
-
-                a {
-                    color: $accentColor;
-                    border-bottom: 1px dotted lighten($accentColor, 20%);
-                    word-break: break-all;
-                    margin-left: 2px;
-                    margin-right: 2px;
-
-                    &:active,
-                    &:hover {
-                        text-decoration: none;
-                        border-bottom-style: solid;
-                        opacity: .7;
-                    }
-                }
-            }
-
-            strong {
-                font-weight: 600;
-
-                a {
-                    border-color: $accentColor;
-                }
-            }
-
-            em {
-                padding-left: 4px;
-                padding-right: 7px;
-            }
-
-            h1 {
-                font-size: 24px;
-                font-size: $font-size + 9px;
-            }
-
-            h2 {
-                font-size: 22px;
-                font-size: $font-size + 7px;
-            }
-
-            h3 {
-                font-size: 20px;
-                font-size: $font-size + 5px;
-            }
-
-            h4 {
-                font-size: 18px;
-                font-size: $font-size + 3px;
-            }
-
-            h5 {
-                font-size: 16px;
-                font-size: $font-size + 1px;
-            }
-
-            h6 {
-                font-size: 14px;
-                font-size: $font-size - 1px;
-            }
-
-            h1,
-            h2,
-            h3 {
-                padding-top: 24px;
-            }
-
-            blockquote,
-            figure,
-            h1,
-            h2,
-            h3,
-            h4,
-            ol,
-            p,
-            pre,
-            table,
-            ul {
-                margin-bottom: 15px;
-                max-width: 100%;
-            }
-
-            h1,
-            h2,
-            h3,
-            h4,
-            h5,
-            h6 {
-                color: #444;
-                cursor: pointer;
-                border-bottom: 1px dotted rgba(1, 1, 1, 0);
-
-                &:hover {
-                    border-bottom: 1px dotted rgba(1, 1, 1, 0.4);
-                }
-            }
-
-            table {
-                max-width: 100%;
-                border: 1px solid #dedede;
-                margin: 15px 0;
-                border-collapse: collapse;
-                font-family: $font-code;
-
-                td,
-                tr {
-                    height: 35px;
-
-                    code {
-                        color: orangered;
-                    }
-                }
-
-                thead {
-                    tr {
-                        background: #f8f8f8;
-                    }
-                }
-
-                tbody {
-                    tr:hover {
-                        background: #efefef;
-                    }
-                }
-
-                td,
-                th {
-                    font-size: 95%;
-                    border-bottom: 1px solid #dfdfdf;
-                    padding: 8px;
-                    word-wrap: break-word;
-                }
-            }
-
-            blockquote p:first-child,
-            blockquote:first-child,
-            figure:first-child,
-            h2:first-child,
-            h3:first-child,
-            h4:first-child,
-            ol:first-child,
-            p:first-child,
-            pre:first-child,
-            table:first-child,
-            ul:first-child {
-                margin-top: 0;
-            }
-
-            ol,
-            ul {
-                line-height: 26px;
-                font-family: $font-code;
-            }
-
-            ul li {
-                margin: 3px 0;
-            }
-
-            audio,
-            video {
-                max-width: 100%;
-            }
-
-            blockquote {
-                position: relative;
-                padding: 8px 16px;
-                margin-left: 4px;
-                margin-right: 4px;
-                border-left: 4px solid lighten(#888, 15%);
-                color: lighten(#737373, 10%);
-                // background: @codeBg;
-                font-size: 95%;
-                border-radius: 0 2px 2px 0;
-                font-family: $font-code;
-
-                figure.highlight {
-                    padding: 6px 10px;
-                    margin: 0;
-                }
-
-                p {
-                    margin: 0;
-                }
-
-                pre {
-                    margin: 24px 0;
-                }
-
-                footer {
-                    margin-top: 10px;
-                    text-align: right;
-                    font-size: 80%;
-                }
-            }
-
-            li code,
-            p code {
-                color: $accentColor;
-                line-height: 1;
-                margin: 0 4px;
-                font-size: 92%;
-                padding: 2px 4px 0;
-                border: 1px solid #eee;
-                border-radius: 2px;
-                word-wrap: break-word;
-                // font-weight: bold !important;
-            }
+            @extend %markdownStyle;
 
             pre {
                 margin: 24px -30px;
@@ -334,24 +95,13 @@
     // 评论
     .comment-container {
         width: 100%;
-        max-width: 900px;
-        min-width: 360px;
+        max-width: $article-body-max-width;
+        min-width: $article-body-min-width;
         background-color: #fff;
         margin: 0 auto;
         box-shadow: 0 10px 20px rgba(1, 1, 1, 0.18);
         overflow-x: hidden;
         border-bottom: 8px solid darken($theme-color, 5%);
-
-        * {
-            word-break: break-all;
-        }
-
-        img {
-            max-width: 100%;
-            border-radius: 2px;
-            box-shadow: 2px 3px 2px #ddd;
-            margin: 5px 0;
-        }
 
         .title {
             text-align: center;
@@ -370,25 +120,35 @@
                 }
             }
         }
-
+        // 评论项
         .replies-item {
             display: flex;
             flex-direction: row;
             align-items: center;
             flex: 1;
-            padding: 10px 0;
-            // overflow: hidden;
-            pre {
-                overflow-x: auto;
+            padding: 10px 10px 10px 0;
+            line-height: 1.4;
+            background-color: #fff;
+            @include media(480px) {
+                & {
+                    padding: 5px 10px 5px 0;
+                }
             }
 
-            .prettyprint,
+            blockquote {
+                p {
+                    margin: 0;
+                }
+            }
+
             pre {
-                width: 100%;
+                overflow-x: auto;
+                width: 98%;
                 box-sizing: border-box;
                 background-color: #555;
                 color: #fff;
                 padding: 12px;
+                margin: 12px auto;
                 box-shadow: 0 0 5px #222 inset;
 
                 > code {
@@ -406,6 +166,7 @@
             color: #444;
             font-weight: bold;
             font-size: 14px;
+            margin-bottom: 5px;
 
             > .time {
                 font-size: 12px;
@@ -416,6 +177,7 @@
         }
 
         .avatar {
+            align-self: flex-start;
             display: block;
             margin: 5px 10px;
             width: 42px;
@@ -436,7 +198,12 @@
         .content {
             font-size: 14px;
             color: #777;
-            overflow-x: hidden;
+            overflow: hidden;
+            @extend %markdownStyle;
+
+            a {
+                border-bottom: none !important;
+            }
 
             p {
                 margin: 12px 0 0;
@@ -475,6 +242,4 @@
             background-color: darken($theme-color, 15%);
         }
     }
-
 }
-
