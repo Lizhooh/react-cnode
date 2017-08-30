@@ -4,15 +4,16 @@
   "private": true,
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
-    "marked": "^0.3.6",
     "moment": "^2.18.1",
-    "qs": "^6.5.0",
+    "nprogress": "^0.2.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-highlight": "^0.10.0",
-    "react-router": "^4.2.0",
+    "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.12"
+    "react-scripts": "1.0.12",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

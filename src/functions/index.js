@@ -1,4 +1,8 @@
 import moment from 'moment';
+import _nprogress from 'nprogress';
+
+_nprogress.configure({ easing: 'ease', speed: 500 });
+
 
 // 大于 1000 时，显示 k
 export const k = (value) => {
@@ -15,3 +19,11 @@ export const k = (value) => {
 export function startTimeOf(time) {
     return moment(time).startOf('hour').fromNow();
 }
+
+export const scrollInfo = {
+    t: () => document.documentElement.scrollTop || document.body.scrollTop,
+    H: () => document.documentElement.scrollHeight || document.body.scrollHeight,
+    h: () => document.documentElement.clientHeight || document.body.clientHeight,
+}
+
+export const nprogress = _nprogress;

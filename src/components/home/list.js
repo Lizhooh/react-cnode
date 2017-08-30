@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { k, startTimeOf } from '../../functions';
-import { Link } from 'react-router-dom';
 
 export default class List extends Component {
 
@@ -11,8 +10,8 @@ export default class List extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        const ndata = nextProps.data;
-        const tdata = this.props.data;
+        const ndata = nextProps.data || [];
+        const tdata = this.props.data || [];
         if (ndata.length === tdata.length) {
             for (let i in ndata) {
                 if (ndata[i].id !== tdata[i].id) return true;
@@ -23,7 +22,7 @@ export default class List extends Component {
     }
 
     render() {
-        const { data = []} = this.props;
+        const { data = [], onClick = () => { } } = this.props;
 
         return (
             <div className='list-container'>
@@ -34,8 +33,8 @@ export default class List extends Component {
                                 <img src={item.author.avatar_url} className='avatar' alt='' />
                                 <span className='name'>{item.author.loginname}</span>
                             </div>
-                            <div className='content'>
-                                <Link className='title' to={`/article/${item.id}`}>{item.title}</Link>
+                            <div className='content' onClick={e => onClick(item)}>
+                                <span className='title' to={`/article/${item.id}`}>{item.title}</span>
                                 <span className='time'>
                                     {startTimeOf(item.last_reply_at)}
                                     <span>, reply: {k(item.reply_count)}</span>

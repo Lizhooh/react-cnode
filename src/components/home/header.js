@@ -1,11 +1,11 @@
 import React from 'react';
 import bg from '../../resource/background.jpg';
 
-import StaticCompoent from '../staticCompoent';
+import StaticContainer from '../staticContainer';
 
 
 export default ({ title = '' }) => (
-    <StaticCompoent>
+    <StaticContainer>
         <div style={{ background: `url(${bg}) center top no-repeat` }}
             className='header-container'
             >
@@ -16,5 +16,5 @@ export default ({ title = '' }) => (
                 </div>
             </div>
         </div>
-    </StaticCompoent>
+    </StaticContainer>
 )

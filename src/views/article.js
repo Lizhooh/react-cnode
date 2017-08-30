@@ -1,40 +1,19 @@
 import React, { Component } from 'react';
-import api from '../api';
-import marked from 'marked';
 import { k, startTimeOf } from '../functions';
 import Highlight from 'react-highlight';
 import FixedButtons from '../components/fixed-buttons';
+import { connect } from 'react-redux';
+import { articleActions } from '../redux/actions';
 
-export default class Article extends Component {
+class Article extends Component {
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            data: {}
-        }
-
-        this.marked = marked.setOptions({
-            renderer: new marked.Renderer(),
-            gfm: true,
-            tables: true,
-            breaks: false,
-            pedantic: false,
-            sanitize: false,
-            smartLists: true,
-            smartypants: false
-        });
-    }
-
-    async componentDidMount() {
-        const { match } = this.props;
-        const res = await api.article(match.params.id);
-        console.log(res);
-        this.setState({ data: res.data });
+        this.props.init(this.props.match.params.id);
     }
 
     render() {
-        const { data } = this.state;
+        const { data } = this.props.state;
 
         return (
             <div className='article-container'>
@@ -65,14 +44,31 @@ export default class Article extends Component {
                             data.replies.map((item, index) => (
                                 <div key={`replies-${index}`} className='replies-item'>
                                     <img src={item.author.avatar_url} alt='' className='avatar' />
-                                    <div dangerouslySetInnerHTML={{ __html: item.content }} className='content' />
+
+                                    <div className='content-view'>
+                                        <span className='name'>
+                                            {item.author.loginname}  <span className='time'>{startTimeOf(item.create_at)}</span>
+                                        </span>
+                                        <Highlight innerHTML={true} className='content'>
+                                            {item.content || ''}
+                                        </Highlight>
+                                    </div>
                                 </div>
                             )))
                     }</div>
                 </div>
 
                 <FixedButtons />
+
+                <button className='back' onClick={e => this.props.history.goBack()}>
+                    <i className="material-icons">&#xE5CB;</i>
+                </button>
             </div>
         );
     }
 }
+
+export default connect(
+    state => ({ state: state.article }),
+    articleActions,
+)(Article);

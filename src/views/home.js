@@ -1,32 +1,25 @@
 import React, { Component } from 'react';
-import api from '../api';
 import Header from '../components/home/header';
 import Tags from '../components/home/tags';
 import List from '../components/home/list';
+import FixedButtons from '../components/fixed-buttons';
+import { homeActions } from '../redux/actions';
+import { connect } from 'react-redux';
+import { scrollInfo as s } from '../functions';
 
-export default class Home extends Component {
+
+class Home extends Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            list: [],
-            page: 1,
-            tag: 'all',
-        };
-
         this.loading = false;
-        this.t = () => document.documentElement.scrollTop || document.body.scrollTop;
-        this.H = () => document.documentElement.scrollHeight || document.body.scrollHeight;
-        this.h = () => document.documentElement.clientHeight || document.body.clientHeight;
-
         window.addEventListener('scroll', this.onScroll);
     }
 
     onScroll = e => {
         // 加载更多
-        if (this.t() + this.h() >= 0.8 * this.H() && this.loading === false) {
-            this.loading = true;
+        if (s.t() + s.h() >= 0.8 * s.H() && this.loading === false) {
             this.onMore();
         }
     }
@@ -37,48 +30,55 @@ export default class Home extends Component {
 
     async componentDidMount() {
         this.loading = true;
-        const res = await api.topics();
-        console.log(res);
-        this.setState({ list: res.data });
+        await this.props.init();
+        // 回到过去
+        document.documentElement.scrollTop =
+        document.body.scrollTop = this.props.state.scrollIndex;
         this.loading = false;
     }
 
     onSelectTag = async (item, index) => {
-        if (this.t() > 260) {
+        if (s.t() > 260) {
+            document.documentElement.scrollTop =
             document.body.scrollTop = 260;
         }
-        const res = await api.topics(item.tag);
-        this.setState({ list: res.data, tag: item.tag });
+        await this.props.init(item.tag, index);
     }
 
     onMore = async () => {
-        const { tag, page, list } = this.state;
-        if (list.length >= 100) { // 大于 100 个换页
-            return;
-        }
-        const res = await api.topics(tag, page + 1);
-        this.setState({ page: page + 1, list: [...list, ...res.data] });
+        this.loading = true;
+        await this.props.more();
         this.loading = false;
     }
 
+    onClick = item => {
+        // 记录滚动条位置
+        this.props.saveScrollIndex(s.h());
+        this.props.history.push(`/article/${item.id}`);
+    }
+
     render() {
-        const { list } = this.state;
+        const { list = [], active } = this.props.state;
 
         return (
             <div className='home-container'>
                 <Header title='Nodejs 专业中文社区' />
                 <div className='body'>
-                    <Tags className='tags' onSelectTag={this.onSelectTag} />
-                    <List data={list} />
+                    <Tags className='tags' onSelectTag={this.onSelectTag} initActive={active} />
+                    <List data={list} onClick={this.onClick} />
 
                     <div className='next-view'>
                         <button>上一页</button>
                         <button>下一页</button>
                     </div>
                 </div>
+                <FixedButtons />
             </div>
         );
     }
 }
 
-
+export default connect(
+    state => ({ state: state.home }),
+    homeActions,
+)(Home);

@@ -43,10 +43,11 @@
                 }
 
                 .avatar {
-                    width: 40px;
-                    height: 40px;
-                    border-radius: 40px;
+                    width: 42px;
+                    height: 42px;
+                    border-radius: 100%;
                     box-shadow: 0 2px 3px #ccc;
+                    background-color: #fff;
                 }
             }
         }
@@ -62,7 +63,7 @@
             }
 
             * {
-                word-wrap: break-word;
+                word-break: break-all;
             }
 
             hr {
@@ -119,7 +120,6 @@
             }
 
             em {
-                // color: @secondaryTextColor;
                 padding-left: 4px;
                 padding-right: 7px;
             }
@@ -341,6 +341,10 @@
         overflow-x: hidden;
         border-bottom: 8px solid darken($theme-color, 5%);
 
+        * {
+            word-break: break-all;
+        }
+
         img {
             width: 100%;
         }
@@ -355,7 +359,7 @@
         }
 
         .replies-list {
-            padding: 20px;
+            padding: 20px 16px;
             @include media(480px) {
                 & {
                     padding: 5px 8px 5px 0;
@@ -367,38 +371,99 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-
-            .prettyprint {
+            flex: 1;
+            padding: 10px 0;
+            // overflow: hidden;
+            pre {
                 overflow-x: auto;
+            }
 
-                > code {
-                    font-family: $font-code;
-                    font-size: 13px;
-                }
+            .prettyprint,
+            pre {
                 width: 100%;
                 box-sizing: border-box;
                 background-color: #555;
                 color: #fff;
                 padding: 12px;
+
+                > code {
+                    font-family: $font-code;
+                    font-size: 13px;
+                }
             }
 
             &:hover {
-                background-color: rgba(1, 1, 1, 0.07)
+                background-color: rgba(1, 1, 1, 0.07);
+            }
+        }
+
+        .name {
+            color: #444;
+            font-weight: bold;
+            font-size: 14px;
+
+            > .time {
+                font-size: 12px;
+                color: #888;
+                font-weight: normal;
+                float: right;
             }
         }
 
         .avatar {
+            display: block;
             margin: 5px 10px;
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 100%;
             box-shadow: 0 2px 3px #ccc;
+            background-color: #fff;
+        }
+
+        .content-view {
+            flex: 1;
+            width: calc(100% - 60px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
         }
 
         .content {
             font-size: 14px;
-            color: #333;
-            flex: 1;
+            color: #777;
+            overflow-x: hidden;
+
+            p {
+                margin: 12px 0 0;
+            }
+        }
+    }
+
+    .back {
+        position: fixed;
+        left: 20px;
+        top: 10px;
+        display: block;
+        border-radius: 100%;
+        width: 45px;
+        height: 45px;
+        text-align: center;
+        padding: 0;
+        transition: all .3s ease;
+        box-shadow: 0 2px 3px #ddd;
+        margin: 10px 0;
+        @include media(720px) {
+            & {
+                display: none;
+            }
+        }
+
+        i {
+            font-size: 32px;
+        }
+
+        &:hover {
+            background-color: darken($theme-color, 15%);
         }
     }
 }

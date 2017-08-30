@@ -5,7 +5,7 @@ export default class Tags extends Component {
         super(props);
 
         this.state = {
-            active: 0,
+            active: this.props.initActive,
             tags: [
                 { name: '全部', tag: 'all' },
                 { name: '精华', tag: 'good' },

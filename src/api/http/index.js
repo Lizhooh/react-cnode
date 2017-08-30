@@ -1,6 +1,14 @@
 // import fetch from 'whatwg-fetch';
 import fetch from 'isomorphic-fetch';
-import qs from 'qs';
+import { nprogress } from '../../functions';
+
+function parse(query) {
+    let arr = [];
+    for (let i in query) {
+        arr.push(`${i}=${query[i]}`);
+    }
+    return arr.join('&');
+}
 
 /**
  * 自定义的 http 请求
@@ -10,8 +18,9 @@ import qs from 'qs';
  * @returns{Promise}
  */
 const _http = (method, url, { query = {}, data = {} } = {}) => {
+    nprogress.start().set(0.5);
 
-    url += '?' + qs.stringify(query);
+    url += '?' + parse(query);
 
     return fetch(url, {
         method: method,
@@ -22,7 +31,10 @@ const _http = (method, url, { query = {}, data = {} } = {}) => {
         },
         data: JSON.stringify(data),
     })
-        .then(res => res.json())
+        .then(res => {
+            nprogress.done();
+            return res.json()
+        })
         .catch(err => {
             console.error(err);
             console.log(`${method} error: ${url}`);

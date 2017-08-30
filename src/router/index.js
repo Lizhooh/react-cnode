@@ -5,10 +5,13 @@ import {
     Switch,
     Redirect,
 } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from '../redux/store';
 
 import Home from '../views/home';
 import Article from '../views/article';
 import NotFound from '../views/notfound';
+
 
 export default class App extends Component {
 
@@ -20,15 +23,17 @@ export default class App extends Component {
 
     render() {
         return (
-            <Router>
-                <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/home" component={Home} />
-                    <Route exact path="/article/:id" component={Article} />
-                    <Redirect from="/*" to="/home" />
-                    <Route component={NotFound} />
-                </Switch>
-            </Router>
+            <Provider store={store}>
+                <Router>
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route exact path="/home" component={Home} />
+                        <Route exact path="/article/:id" component={Article} />
+                        <Redirect from="/*" to="/home" />
+                        <Route component={NotFound} />
+                    </Switch>
+                </Router>
+            </Provider>
         );
     }
 }
