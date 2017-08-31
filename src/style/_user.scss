@@ -1,0 +1,134 @@
+.user-container {
+    padding: 50px 0;
+    @include media(480px) {
+        & {
+            padding: 0;
+        }
+    }
+
+    .user {
+        background-color: #fff;
+        min-height: 500px;
+        padding-bottom: 50px;
+    }
+
+    .header {
+        height: 120px;
+        background-color: lighten($theme-color, 5%);
+
+        .info {
+            position: relative;
+            top: 45%;
+            height: 250px;
+
+            .box-view {
+                display: flex;
+                flex-direction: row;
+                width: 380px;
+                margin: 20px auto 0;
+                justify-content: center;
+                @include media(480px) {
+                    & {
+                        width: 100%;
+                    }
+                }
+            }
+
+            .box {
+                margin: 15px 12px;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                span:first-child {
+                    font-size: 32px;
+                }
+
+                span:last-child {
+                    margin-top: 5px;
+                    font-size: 15px;
+                }
+            }
+        }
+
+        .avatar {
+            border-radius: 100%;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            display: block;
+            box-shadow: 1px 2px 6px #ccc;
+            border: 2px solid #fff;
+            box-sizing: content-box;
+            @include media(480px) {
+                & {
+                    width: 100px;
+                    height: 100px;
+                }
+            }
+        }
+    }
+
+    .body {
+        margin-top: 200px;
+
+        .make {
+            border-left: 5px solid $theme-color;
+            padding: 5px 12px;
+            color: #555;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    }
+
+    .list {
+        padding: 5px 15px;
+        @include media(480px) {
+            & {
+                padding: 0;
+            }
+        }
+    }
+
+    .item {
+        display: flex;
+        align-items: center;
+
+        &:hover {
+            background-color: rgba(1, 1, 1, 0.08);
+        }
+
+        .avatar {
+            align-self: flex-start;
+            height: 40px;
+            width: 40px;
+            border-radius: 100%;
+            margin: 10px;
+            box-sizing: content-box;
+            box-shadow: 0 2px 3px #ccc;
+        }
+
+        .author {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1;
+
+            .name {
+                font-size: 13px;
+                font-weight: bold;
+            }
+
+            .title {
+                font-size: 14px;
+                background-color: transparent;
+                color: #333;
+                padding: 0 10px 0 0;
+                margin-top: 3px;
+                text-align: left;
+                color: #777;
+            }
+        }
+    }
+}

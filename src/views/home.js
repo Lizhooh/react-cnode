@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import Header from '../components/home/header';
-import Tags from '../components/home/tags';
-import List from '../components/home/list';
-import FixedButtons from '../components/fixed-buttons';
 import { homeActions } from '../redux/actions';
 import { connect } from 'react-redux';
+import { TopicType, TopicList, Header } from '../components/home';
+import {
+    Tool,
+    StaticView,
+} from '../components';
 import { scrollInfo as s } from '../functions';
 
 // 首页
@@ -61,13 +62,21 @@ class Home extends Component {
 
     render() {
         const { list = [], active, showNext } = this.props.state;
+        const { history } = this.props;
 
         return (
             <div className='home-container'>
-                <Header title='Nodejs 专业中文社区' />
+                <StaticView>
+                    <Header title='Nodejs 专业中文社区' />
+                </StaticView>
+
                 <div className='body'>
-                    <Tags className='tags' onSelectTag={this.onSelectTag} initActive={active} />
-                    <List data={list} onClick={this.onClick} />
+
+                    <StaticView>
+                        <TopicType className='tags' onSelectTag={this.onSelectTag} initActive={active} />
+                    </StaticView>
+
+                    <TopicList data={list} onClick={this.onClick} />
 
                     {showNext &&
                         <div className='next-view'>
@@ -75,7 +84,10 @@ class Home extends Component {
                         </div>
                     }
                 </div>
-                <FixedButtons />
+
+                <StaticView>
+                    <Tool history={history} />
+                </StaticView>
             </div>
         );
     }

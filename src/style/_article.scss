@@ -1,5 +1,25 @@
 @import '_variable.scss';
 
+.view-container {
+    width: 100%;
+    max-width: $article-body-max-width;
+    min-width: $article-body-min-width;
+    background-color: #fff;
+    margin: 0 auto;
+    box-shadow: 0 10px 20px rgba(1, 1, 1, 0.18);
+    overflow-x: hidden;
+    border-bottom: 8px solid darken($theme-color, 5%);
+
+    .title {
+        text-align: center;
+        background-color: $theme-color;
+        padding: 10px 0;
+        margin: 0;
+        color: #fff;
+        font-size: 16px;
+    }
+}
+
 .article-container {
     padding: 50px 0;
     @include media(480px) {
@@ -9,15 +29,6 @@
     }
 
     .article {
-        width: 100%;
-        max-width: $article-body-max-width;
-        min-width: $article-body-min-width;
-        background-color: #fff;
-        margin: 0 auto;
-        box-shadow: 0 10px 20px rgba(1, 1, 1, 0.18);
-        overflow-x: hidden;
-        border-bottom: 8px solid darken($theme-color, 5%);
-
         .header {
             padding: 25px;
             background-color: darken($theme-color, 5%);
@@ -26,8 +37,13 @@
             .title {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
                 font-weight: normal;
-                margin-top: 8px;
+                margin-top: 10px;
                 color: #fff;
+                background-color: transparent;
+                text-align: left;
+                margin: 4px 0 12px;
+                padding-top: 0;
+                font-size: 20px;
             }
 
             .info {
@@ -94,15 +110,6 @@
     }
     // 评论
     .comment-container {
-        width: 100%;
-        max-width: $article-body-max-width;
-        min-width: $article-body-min-width;
-        background-color: #fff;
-        margin: 0 auto;
-        box-shadow: 0 10px 20px rgba(1, 1, 1, 0.18);
-        overflow-x: hidden;
-        border-bottom: 8px solid darken($theme-color, 5%);
-
         .title {
             text-align: center;
             background-color: $theme-color;
@@ -201,6 +208,10 @@
             overflow: hidden;
             @extend %markdownStyle;
 
+            img {
+                display: inline;
+            }
+
             a {
                 border-bottom: none !important;
             }
@@ -212,7 +223,7 @@
     }
 
     .comment-editor-container {
-        @extend .comment-container;
+        .title {}
     }
 
     .back {
@@ -236,6 +247,8 @@
 
         i {
             font-size: 32px;
+            position: relative;
+            top: 2px;
         }
 
         &:hover {

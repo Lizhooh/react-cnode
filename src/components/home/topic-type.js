@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Tags extends Component {
+export default class TopicType extends Component {
     constructor(props) {
         super(props);
 

@@ -10,6 +10,7 @@ import store from '../redux/store';
 
 import Home from '../views/home';
 import Article from '../views/article';
+import User from '../views/user';
 import NotFound from '../views/notfound';
 
 export default class App extends Component {
@@ -28,6 +29,7 @@ export default class App extends Component {
                         <Route exact path="/" component={Home} />
                         <Route exact path="/home" component={Home} />
                         <Route exact path="/article/:id" component={Article} />
+                        <Route exact path="/user/:id?" component={User} />
                         <Redirect from="/*" to="/home" />
                         <Route component={NotFound} />
                     </Switch>

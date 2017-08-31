@@ -3,15 +3,15 @@ import { k, startTimeOf } from '../../functions';
 
 export default class List extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {};
+    static defaultProps = {
+        data: [],
+        onClick: () => {},
     }
 
     shouldComponentUpdate(nextProps, nextState) {
         const ndata = nextProps.data || [];
         const tdata = this.props.data || [];
+
         if (ndata.length === tdata.length) {
             for (let i in ndata) {
                 if (ndata[i].id !== tdata[i].id) return true;
@@ -22,7 +22,7 @@ export default class List extends Component {
     }
 
     render() {
-        const { data = [], onClick = () => { } } = this.props;
+        const { data, onClick } = this.props;
 
         return (
             <div className='list-container'>

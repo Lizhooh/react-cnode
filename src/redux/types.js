@@ -22,3 +22,7 @@ export const HOME = extendState({
 export const ARTICLE = extendState({
     init: 'ARTICLE_init',
 });
+
+export const USER = extendState({
+    info: 'USER_info',              // 用户信息
+});

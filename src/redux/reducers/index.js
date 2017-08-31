@@ -13,3 +13,4 @@ export default (state = root_init_state, action) => {
 
 export { default as home } from './home';
 export { default as article } from './article';
+export { default as user } from './user';

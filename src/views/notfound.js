@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default () => (
-    <div>404</div>
+    <p style={{ fontSize: 32 }}>404</p>
 );
