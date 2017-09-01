@@ -32,7 +32,7 @@ export default class Tool extends Component {
 
     renderBack = (history) => (
         <button className='back' onClick={e => history.goBack()}>
-            <i className="material-icons">&#xE5CB;</i>
+            <i className="fa fa-chevron-left"></i>
         </button>
     )
 
@@ -40,14 +40,14 @@ export default class Tool extends Component {
         <button onClick={e => history.push(`/user/${this.state.user.loginname}`)}>{
             user.id ?
                 <img src={user.avatar_url} alt="" className='user-avatar' /> :
-                <i className="material-icons" style={{ color: '#fff' }}>&#xE87C;</i>
+                <i className="fa fa-circle-o-notch"></i>
         }
         </button>
     )
 
     renderEdit = (onEdit) => (
         <button onClick={onEdit}>
-            <i className="material-icons">&#xE254;</i>
+            <i className="fa fa-pencil" aria-hidden="true"></i>
         </button>
     )
 
@@ -57,16 +57,19 @@ export default class Tool extends Component {
 
         return (
             <div className='fixed-buttons-container'>
-                {user && this.renderUser(history, _user)}
                 {back && this.renderBack(history)}
-                {edit && this.renderEdit(onEdit)}
 
-                <button
-                    onClick={e => document.body.scrollTop = 0}
-                    onTouchEnd={e => document.body.scrollTop = 0}
-                    >
-                    <i className="material-icons top">&#xE5CE;</i>
-                </button>
+                <div className='fixed-right'>
+                    {user && this.renderUser(history, _user)}
+                    {edit && this.renderEdit(onEdit)}
+
+                    <button
+                        onClick={e => document.body.scrollTop = 0}
+                        onTouchEnd={e => document.body.scrollTop = 0}
+                        >
+                        <i className="fa fa-chevron-up"></i>
+                    </button>
+                </div>
             </div>
         );
     }

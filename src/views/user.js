@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { userActions } from '../redux/actions';
 import { Tool } from '../components';
 import Item from '../components/user/item';
-import { readUser } from '../storage';
+import { readUser, removeUser } from '../storage';
 
 // 用户
 class User extends Component {
@@ -19,6 +19,12 @@ class User extends Component {
         if (window._login) {
             this.props.init(this.props.match.params.id);
         }
+    }
+
+    onSignOut = () => {
+        removeUser();
+        window._login = false;
+        this.props.history.replace('/login');
     }
 
     renderRepliesList = (list, history) => (
@@ -68,6 +74,11 @@ class User extends Component {
             <div className='user-container'>
                 <div className='view-container user'>
                     <header className='header'>
+                        <button style={{ position: 'absolute', borderTopLeftRadius: 0 }}
+                            onClick={this.onSignOut}
+                            >
+                            <i className="fa fa-sign-out"></i>
+                        </button>
                         <div className='info'>
                             <img alt="" src={info.avatar_url} className='avatar' />
                             <div className='box-view'>

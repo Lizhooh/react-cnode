@@ -7,7 +7,7 @@
     @include media(480px) {
         & {
             right: 12px;
-            top: calc(100% - 180px);
+            top: calc(100% - 190px);
         }
     }
 
@@ -22,6 +22,13 @@
         }
     }
 
+    .fixed-right {
+        height: 180px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
     button {
         display: block;
         border-radius: 100%;
@@ -31,20 +38,10 @@
         padding: 1px;
         transition: all .3s ease;
         box-shadow: 0 2px 3px rgba(1, 1, 1, 0.2);
-        margin: 10px 0;
+        margin: 5px 0;
 
         i {
-            font-size: 22px;
-            position: relative;
-            top: 1px;
-        }
-
-        .top {
-            font-size: 32px;
-        }
-
-        .user {
-            font-size: 24px;
+            font-size: 21px;
         }
 
         &:hover {
@@ -72,9 +69,8 @@
         }
 
         i {
-            font-size: 32px;
             position: relative;
-            top: 2px;
+            left: -1px;
         }
 
         &:hover {

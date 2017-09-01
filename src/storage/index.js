@@ -72,3 +72,7 @@ export const readUser = () => {
         return null;
     }
 }
+
+export const removeUser = () => {
+    return storage.remove('user');
+}

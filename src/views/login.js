@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-
 import api from '../api';
 import { saveUser } from '../storage';
+import { Tool } from '../components';
 
 export default class Login extends Component {
 
@@ -37,6 +37,7 @@ export default class Login extends Component {
 
     render() {
         const { msg } = this.state;
+        const { history } = this.props;
 
         return (
             <div className='user-container'>
@@ -61,6 +62,7 @@ export default class Login extends Component {
                         </div>
                     </header>
                 </div>
+                <Tool history={history} back={true} edit={!!0} user={!!0} />
             </div>
         );
     }

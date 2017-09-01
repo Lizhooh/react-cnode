@@ -149,12 +149,13 @@
                     width: 55px;
                     height: 55px;
                     border-radius: 100%;
-                    margin: 10px;
+                    margin: 4px;
                     box-shadow: 0 2px 4px 1px rgba(1, 1, 1, 0.15);
                     @include media(480px) {
                         & {
                             width: 45px;
                             height: 45px;
+                            margin: 10px;
                         }
                     }
                 }
@@ -162,6 +163,7 @@
                 .name {
                     color: #aaa;
                     font-size: 12px;
+                    padding: 4px 0;
                     @include media(480px) {
                         & {
                             display: none;

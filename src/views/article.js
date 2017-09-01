@@ -67,12 +67,14 @@ class Article extends Component {
 
         if (id !== this.props.match.params.id) data = {};
 
+        console.log(window._login);
+
         return (
             <div className='article-container'>
                 {/* 文章 */}
                 <div className='view-container article' id='article'>
                     <div className='header'>
-                        <div className='star' alt='收藏' onClick={this.onStar}>{
+                        <div className='star' title='收藏' onClick={this.onStar}>{
                             star ?
                                 <i className="material-icons">&#xE87D;</i> :
                                 <i className="material-icons">&#xE87E;</i>
@@ -103,7 +105,9 @@ class Article extends Component {
                 }
 
                 <StaticView>
-                    <Tool history={history} back={true} onEdit={e => {
+                    <Tool history={history} back={true}
+                        edit={window._login}
+                        onEdit={e => {
                         let d = document.querySelector('#comment-editor');
                         if (d !== null) {
                             document.body.scrollTop = d.getBoundingClientRect().bottom;

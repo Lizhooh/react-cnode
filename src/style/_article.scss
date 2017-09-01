@@ -22,7 +22,7 @@
 
 .article-container {
     padding: 50px 0;
-    @include media(480px) {
+    @include media(720px) {
         & {
             padding: 0;
         }
@@ -38,8 +38,8 @@
             .star {
                 background-color: transparent;
                 position: absolute;
-                right: 15px;
-                top: 15px;
+                right: 12px;
+                top: 12px;
                 z-index: 5;
                 cursor: pointer;
                 font-size: 24px;
@@ -245,35 +245,5 @@
 
     .comment-editor-container {
         .title {}
-    }
-
-    .back {
-        position: fixed;
-        left: 20px;
-        top: 10px;
-        display: block;
-        border-radius: 100%;
-        width: 45px;
-        height: 45px;
-        text-align: center;
-        padding: 0;
-        transition: all .3s ease;
-        box-shadow: 0 2px 3px #ddd;
-        margin: 10px 0;
-        @include media(720px) {
-            & {
-                display: none;
-            }
-        }
-
-        i {
-            font-size: 32px;
-            position: relative;
-            top: 2px;
-        }
-
-        &:hover {
-            background-color: darken($theme-color, 15%);
-        }
     }
 }
