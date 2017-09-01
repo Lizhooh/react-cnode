@@ -5,18 +5,18 @@ import { k, startTimeOf } from '../functions';
 import Highlight from '../lib/react-highlight';
 import RepliesList from '../components/article/replies-list';
 import {
-    Editor,
     StaticView,
     Tool
 } from '../components';
+import SimplemdeEditor from '../lib/react-simplemde';
 
 // 文章页
 class Article extends Component {
 
     constructor(props) {
         super(props);
-
         this.state = { showComment: false };
+        this.text = '';
     }
 
     async componentDidMount() {
@@ -25,8 +25,43 @@ class Article extends Component {
         this.setState({ showComment: true });
     }
 
+    onStar = () => {
+        this.props.star();
+    }
+
+    onCreateComment = async e => {
+        await this.props.createComment(this.text);
+        this.simplemde.value('');
+    }
+
+    renderEditor = () => (
+        <div className='view-container' id='comment-editor'>
+            <p className='title'>回复</p>
+            <div className='editor-container'>
+                <SimplemdeEditor
+                    placeholder='支持 Markdown 格式和快捷键。'
+                    className='editor'
+                    onChange={text => this.text = text}
+                    simplemde={s => this.simplemde = s}
+                    />
+            </div>
+            <div style={{ float: 'left', padding: 15 }}>
+                <button onClick={this.onCreateComment}>回复</button>
+            </div>
+        </div>
+    )
+
+    renderReplies = (replies) => (
+        <div className='view-container comment-container' id='comment'>
+            {replies.length !== 0 && <div>
+                <p className='title'>评论</p>
+                <RepliesList list={replies} />
+            </div>}
+        </div>
+    )
+
     render() {
-        let { data, id } = this.props.state;
+        let { data, id, star, replies } = this.props.state;
         const { showComment } = this.state;
         const { history } = this.props;
 
@@ -35,43 +70,45 @@ class Article extends Component {
         return (
             <div className='article-container'>
                 {/* 文章 */}
-                <StaticView render={2}>
-                    <div className='view-container article' id='article'>
-                        <div className='header'>
-                            <h2 className='title'>{data.title}</h2>
-                            <div className='info'>
-                                <span>
-                                    <img src={data.author && data.author.avatar_url} alt='' className='avatar' />
-                                </span>
-                                <span>更新于：{startTimeOf(data.last_reply_at)}</span>
-                                <span>浏览：{k(data.visit_count)}</span>
-                            </div>
+                <div className='view-container article' id='article'>
+                    <div className='header'>
+                        <div className='star' alt='收藏' onClick={this.onStar}>{
+                            star ?
+                                <i className="material-icons">&#xE87D;</i> :
+                                <i className="material-icons">&#xE87E;</i>
+                        }</div>
+                        <h2 className='title'>{data.title}</h2>
+                        <div className='info'>
+                            <span>
+                                <img src={data.author && data.author.avatar_url} alt='' className='avatar' />
+                            </span>
+                            <span>更新于：{startTimeOf(data.last_reply_at)}</span>
+                            <span>浏览：{k(data.visit_count)}</span>
                         </div>
+                    </div>
+
+                    <StaticView render={2}>
                         <Highlight innerHTML={true} className='content'>
                             {data.content || ''}
                         </Highlight>
-                    </div>
-                </StaticView>
+                    </StaticView>
+                </div>
 
                 {/* 评论 */}
                 {showComment &&
                     <div>
-                        <div className='view-container comment-container' id='comment'>
-                            {data.replies.length !== 0 && <div>
-                                <p className='title'>评论</p>
-                                <RepliesList list={data.replies} />
-                            </div>}
-                        </div>
-
-                        <div className='view-container '>
-                            <p className='title'>回复</p>
-                            <Editor />
-                        </div>
+                        {this.renderReplies(replies)}
+                        {window._login && this.renderEditor()}
                     </div>
                 }
 
                 <StaticView>
-                    <Tool history={history} showBack={true} />
+                    <Tool history={history} back={true} onEdit={e => {
+                        let d = document.querySelector('#comment-editor');
+                        if (d !== null) {
+                            document.body.scrollTop = d.getBoundingClientRect().bottom;
+                        }
+                    } } />
                 </StaticView>
             </div>
         );

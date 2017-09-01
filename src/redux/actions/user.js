@@ -1,11 +1,14 @@
 import { USER } from '../types';
 import api from '../../api';
 
-export const info = (name) => async (dispatch, getState) => {
-    const res = await api.userInfo(name);
+export const init = (name) => async (dispatch, getState) => {
+    const [res1, res2] = await Promise.all([
+        api.userInfo(name),
+        api.userStar(name),
+    ]);
 
-    if (res && res.success) {
-        dispatch({ type: USER.info_success, info: res.data });
+    if (res1 && res2 && res1.success && res2.success) {
+        dispatch({ type: USER.init_success, info: res1.data, stars: res2.data });
     }
 };
 

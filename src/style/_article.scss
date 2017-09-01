@@ -33,6 +33,27 @@
             padding: 25px;
             background-color: darken($theme-color, 5%);
             min-height: 120px;
+            position: relative;
+
+            .star {
+                background-color: transparent;
+                position: absolute;
+                right: 15px;
+                top: 15px;
+                z-index: 5;
+                cursor: pointer;
+                font-size: 24px;
+
+                &:hover {
+                    > i {
+                        color: #ddd;
+                    }
+                }
+
+                > i {
+                    color: #fff;
+                }
+            }
 
             .title {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;

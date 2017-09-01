@@ -12,6 +12,7 @@ import Home from '../views/home';
 import Article from '../views/article';
 import User from '../views/user';
 import NotFound from '../views/notfound';
+import Login from '../views/login';
 
 export default class App extends Component {
 
@@ -30,6 +31,7 @@ export default class App extends Component {
                         <Route exact path="/home" component={Home} />
                         <Route exact path="/article/:id" component={Article} />
                         <Route exact path="/user/:id?" component={User} />
+                        <Route exact path="/login" component={Login} />
                         <Redirect from="/*" to="/home" />
                         <Route component={NotFound} />
                     </Switch>

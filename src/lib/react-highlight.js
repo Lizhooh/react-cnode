@@ -14,6 +14,13 @@ import java from 'highlight.js/lib/languages/java';
 
 // highlight.js 在 react 上的实现
 class Highlight extends React.Component {
+
+    static defaultProps = {
+        innerHTML: false,
+        className: '',
+        languages: [],
+    };
+
     componentDidMount() {
         this.highlightCode();
     }
@@ -61,11 +68,5 @@ class Highlight extends React.Component {
         }
     }
 }
-
-Highlight.defaultProps = {
-    innerHTML: false,
-    className: '',
-    languages: [],
-};
 
 export default Highlight;

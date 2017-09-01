@@ -8,7 +8,10 @@ Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiac
     // padding: .5em;
     // background: #f0f0f0;
     -webkit-text-size-adjust: none;
-    * { color: #fff; }
+
+    * {
+        color: #fff;
+    }
 }
 
 .hljs,
@@ -48,7 +51,7 @@ Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiac
 }
 
 .hljs-attr {
-  color: #9af;
+    color: #9af;
 }
 
 .asciidoc .hljs-bullet,

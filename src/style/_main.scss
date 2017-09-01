@@ -58,6 +58,25 @@ button {
     border-radius: 3px;
     outline: none;
     cursor: pointer;
+
+    &:hover {
+        background-color: darken($theme-color, 10%);
+    }
+
+    &:active {
+        background-color: lighten($theme-color, 10%);
+    }
+}
+
+input[type='text'] {
+    border: 1px solid $theme-color;
+    border-radius: 3px;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    margin: auto 10px;
+    font-family: $font-default;
+    outline: none;
+    vertical-align: center;
 }
 
 ::-webkit-scrollbar {
@@ -69,24 +88,24 @@ button {
             height: 3px;
         }
     }
-}
 
-::-webkit-scrollbar-track-piece {
-    background-color: #555;
-}
+    &-track-piece {
+        background-color: #555;
+    }
 
-::-webkit-scrollbar-thumb {
-    background: #3bf;
-    min-height: 150px;
-    max-height: 400px;
-    min-width: 150px;
-    max-width: 400px;
-}
+    &-thumb {
+        background-color: #3bf;
+        min-height: 150px;
+        max-height: 400px;
+        min-width: 150px;
+        max-width: 400px;
 
-::-webkit-scrollbar-thumb:vertical:hover {
-    background: #39f;
-}
+        &:hover {
+            background-color: #39f;
+        }
 
-::-webkit-scrollbar-thumb:horizontal:hover {
-    background: #39f;
+        &:active {
+            background-color: #3cf;
+        }
+    }
 }

@@ -1,31 +1,74 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { readUser } from '../storage';
 
-export default ({ history, showBack = false, showUser = true, showEdit = true }) => (
-    <div className='fixed-buttons-container'>
-        {showBack &&
-            <button className='back' onClick={e => history.goBack()}>
-                <i className="material-icons">&#xE5CB;</i>
-            </button>
+export default class Tool extends Component {
+
+    static defaultProps = {
+        back: false,
+        edit: true,
+        user: true,
+        history: {}
+    }
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            user: {},
         }
+    }
 
-        {showUser &&
-            <button onClick={e => history.push(`/user/`)}>
-                <img src="https://avatars3.githubusercontent.com/u/19299088?v=4&s=120" alt="" className='user-avatar' />
-            </button>
+    async componentWillMount() {
+        let user = readUser()
+        if (user && user.accesstoken) {
+            // let res = await api.checkToken(user.accesstoken);
+            window._login = true;
+            this.setState({ user: user });
         }
-
-        {showEdit &&
-            <button>
-                <i className="material-icons">&#xE254;</i>
-            </button>
+        else {
+            window._login = false;
         }
+    }
 
-        <button
-            onClick={e => document.body.scrollTop = 0}
-            onTouchEnd={e => document.body.scrollTop = 0}
-            >
-            <i className="material-icons top">&#xE5CE;</i>
+    renderBack = (history) => (
+        <button className='back' onClick={e => history.goBack()}>
+            <i className="material-icons">&#xE5CB;</i>
         </button>
-    </div>
-);
+    )
+
+    renderUser = (history, user) => (
+        <button onClick={e => history.push(`/user/${this.state.user.loginname}`)}>{
+            user.id ?
+                <img src={user.avatar_url} alt="" className='user-avatar' /> :
+                <i className="material-icons" style={{ color: '#fff' }}>&#xE87C;</i>
+        }
+        </button>
+    )
+
+    renderEdit = (onEdit) => (
+        <button onClick={onEdit}>
+            <i className="material-icons">&#xE254;</i>
+        </button>
+    )
+
+    render() {
+        const { back, edit, user, history, onEdit } = this.props;
+        const { user: _user } = this.state;
+
+        return (
+            <div className='fixed-buttons-container'>
+                {user && this.renderUser(history, _user)}
+                {back && this.renderBack(history)}
+                {edit && this.renderEdit(onEdit)}
+
+                <button
+                    onClick={e => document.body.scrollTop = 0}
+                    onTouchEnd={e => document.body.scrollTop = 0}
+                    >
+                    <i className="material-icons top">&#xE5CE;</i>
+                </button>
+            </div>
+        );
+    }
+}
 

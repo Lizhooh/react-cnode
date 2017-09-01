@@ -1,8 +1,5 @@
 import _nprogress from 'nprogress';
 
-
-
-
 // 大于 1000 时，显示 k
 export const k = (value) => {
     if (value >= 1000) {
@@ -14,58 +11,34 @@ export const k = (value) => {
 };
 
 // 计算时间差
-export function startTimeOf(_time) {
-    if (_time === undefined) {
+export function startTimeOf(time) {
+    if (time === undefined) {
         return '';
     }
     // 2017-08-30T03:28:11.446Z
-    let nowstr = new Date().toISOString();
-    let timestr = new Date(_time).toISOString();
+    const _time = new Date(time).getTime();
+    const _now = Date.now();
 
-    const [ny, nm, nd] = `${nowstr.match(/^\d{4}-\d{1,2}-\d{1,2}/)}`.split('-');
-    const [ty, tm, td] = `${timestr.match(/^\d{4}-\d{1,2}-\d{1,2}/)}`.split('-');
+    const dt = (_now - _time) / 1000 | 0;
+    const dt_second = dt / 1000 | 0;
+    const dt_minute = dt / 60 | 0;
+    const dt_hour = dt / 3600 | 0;
+    const dt_day = dt / 86400 | 0;
+    const dt_month = dt / 2592000 | 0;
+    const dt_year = dt / 31104000 | 0;
 
-    const [nh, nmin, ns] = `${nowstr.match(/\d{1,2}:\d{1,2}:\d{1,2}/)}`.split(':');
-    const [th, tmin, ts] = `${timestr.match(/\d{1,2}:\d{1,2}:\d{1,2}/)}`.split(':');
+    let arr = [
+        [dt_year, '年前'],
+        [dt_month, '月前'],
+        [dt_day, '天前'],
+        [dt_hour, '小时前'],
+        [dt_minute, '分钟前'],
+        [dt_second, '秒前'],
+    ];
 
-    let now = {
-        year: ny,
-        month: nm,
-        day: nd,
-        hour: nh,
-        minute: nmin,
-        second: ns,
-    };
-
-    let time = {
-        year: ty,
-        month: tm,
-        day: td,
-        hour: th,
-        minute: tmin,
-        second: ts,
-    };
-
-    let keys = {
-        year: '年',
-        month: '月',
-        day: '日',
-        hour: '小时',
-        minute: '分钟',
-        second: '秒',
-    };
-
-    // 秒前，分前，时前，日前，月前，年前。
-    for (let key in keys) {
-        if (now[key] !== time[key]) {
-            let dt = now[key] - time[key];
-            // 发生在未来
-            if (dt < 0) {
-                return `${-dt} ${keys[key]}后`
-            }
-            else {
-                return `${dt} ${keys[key]}前`
-            }
+    for (let i of arr) {
+        if (i[0] !== 0) {
+            return i[0] + ' ' + i[1];
         }
     }
 

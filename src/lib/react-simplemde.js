@@ -54,6 +54,8 @@ export default class ReactSimplemde extends Component {
 
         const allOptions = Object.assign({}, initialOptions, this.props.options);
         this.simplemde = new simplemde(allOptions);
+        this.props.simplemde &&
+        this.props.simplemde(this.simplemde);
     }
 
     // 事件回调

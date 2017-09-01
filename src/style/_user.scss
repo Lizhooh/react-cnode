@@ -53,6 +53,7 @@
         }
 
         .avatar {
+            background-color: #fff;
             border-radius: 100%;
             width: 120px;
             height: 120px;
@@ -61,9 +62,13 @@
             box-shadow: 1px 2px 6px #ccc;
             border: 2px solid #fff;
             box-sizing: content-box;
+            outline: none;
+            text-align: center;
+            line-height: 120px;
             @include media(480px) {
                 & {
                     width: 100px;
+                    line-height: 100px;
                     height: 100px;
                 }
             }
@@ -118,6 +123,14 @@
             .name {
                 font-size: 13px;
                 font-weight: bold;
+                width: 100%;
+                padding-right: 10px;
+
+                > .time {
+                    float: right;
+                    font-weight: normal;
+                    font-size: 12px;
+                }
             }
 
             .title {
@@ -130,5 +143,10 @@
                 color: #777;
             }
         }
+    }
+
+    .msg {
+        margin: 10px auto;
+        width: 70%;
     }
 }
