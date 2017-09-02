@@ -7,6 +7,10 @@ const init_state = {
         recent_replies: [],
     },
     stars: [],
+    msgs: {
+        read: [],
+        notread: [],
+    },
 };
 
 export default (state = init_state, action) => {
@@ -16,6 +20,7 @@ export default (state = init_state, action) => {
             ...state,
             info: action.info,
             stars: action.stars,
+            msgs: action.msgs,
         }
 
         default: return state;

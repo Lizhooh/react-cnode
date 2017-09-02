@@ -8,11 +8,12 @@
 function encrypt(str) {
     let randNumber = Math.random() * 100 | 0;
     let arr = [];
+
     for (let i = 0, len = str.length; i < len; i++) {
         arr.push(str[i].charCodeAt() + randNumber);
     }
-    arr.reverse();
-    return arr.join('-') + '-' + randNumber;
+
+    return arr.reverse().join('-') + '-' + randNumber;
 }
 
 /**
@@ -27,9 +28,11 @@ function discrypt(str = '') {
     let arr = [];
     str = str.slice(0, lastIndex);
     str = str.split('-').reverse();
+
     for (let i = 0, len = str.length; i < len; i++) {
         arr.push(String.fromCharCode(str[i] - randNumber));
     }
+
     return arr.join('');
 }
 

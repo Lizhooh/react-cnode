@@ -29,7 +29,21 @@
         justify-content: flex-end;
     }
 
+    .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 100%;
+        display: block;
+        background-color: #f33;
+        box-shadow: 1px 2px 2px #aaa;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+    }
+
     button {
+        position: relative;
         display: block;
         border-radius: 100%;
         width: 45px;
@@ -71,6 +85,7 @@
         i {
             position: relative;
             left: -1px;
+            top: 1px;
         }
 
         &:hover {

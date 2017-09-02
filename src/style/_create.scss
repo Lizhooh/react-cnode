@@ -1,0 +1,76 @@
+.create-container {
+    padding: 50px 0;
+    @include media(720px) {
+        & {
+            padding: 0;
+        }
+    }
+
+    .CodeMirror {
+        min-height: 270px !important;
+    }
+
+    .CodeMirror-scroll {
+        min-height: 270px !important;
+    }
+
+    .header {
+        padding: 10px 0;
+
+        i.fa {
+            color: $theme-color;
+            position: relative;
+            top: 2px;
+            right: 5px;
+            font-size: 18px;
+        }
+
+        span.label {
+            border-left: 4px solid $theme-color;
+            padding: 4px 0 4px 10px;
+            box-sizing: content-box;
+            color: #666;
+            font-size: 16px;
+        }
+
+        .tags {
+            display: inline;
+
+            .tag {
+                margin: 0 9px;
+                cursor: pointer;
+            }
+        }
+
+        .input-title {
+            margin: 15px 0;
+
+            input[type='text'] {
+                padding: 4px 8px;
+                max-width: 600px;
+                width: calc(100% - 100px);
+                color: #333;
+                border: none;
+                border-bottom: 1px solid $theme-color;
+                margin-left: 0;
+            }
+        }
+
+        .input-tab {
+            margin: 15px 0;
+        }
+    }
+
+    .msg {
+        margin-left: 15px;
+        font-size: 14px;
+        color: #555;
+
+        i {
+            position: relative;
+            top: 2px;
+            margin-right: 5px;
+            color: #f55;
+        }
+    }
+}

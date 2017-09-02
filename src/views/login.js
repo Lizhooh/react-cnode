@@ -17,7 +17,6 @@ export default class Login extends Component {
         if (this.text !== '') {
             // 检验
             const res = await api.checkToken(this.text);
-            console.log(res);
             if (!res.success) {
                 this.setState({ msg: 'token 不正确' });
             }

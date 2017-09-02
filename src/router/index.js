@@ -5,6 +5,7 @@ import {
     Switch,
     Redirect,
 } from 'react-router-dom';
+
 import { Provider } from 'react-redux';
 import store from '../redux/store';
 
@@ -13,6 +14,7 @@ import Article from '../views/article';
 import User from '../views/user';
 import NotFound from '../views/notfound';
 import Login from '../views/login';
+import Create from '../views/create';
 
 export default class App extends Component {
 
@@ -32,6 +34,7 @@ export default class App extends Component {
                         <Route exact path="/article/:id" component={Article} />
                         <Route exact path="/user/:id?" component={User} />
                         <Route exact path="/login" component={Login} />
+                        <Route exact path="/create" component={Create} />
                         <Redirect from="/*" to="/home" />
                         <Route component={NotFound} />
                     </Switch>

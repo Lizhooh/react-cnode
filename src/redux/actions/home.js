@@ -7,7 +7,6 @@ export const init = (tag = 'all', active) => async (dispatch, getState) => {
     if (restore && active === undefined) return;
 
     const res = await api.topics(tag, 1);
-    console.log(res);
 
     if (res && res.success) {
         dispatch({ type: HOME.init_success, list: res.data, tag, active });

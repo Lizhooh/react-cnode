@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { readUser } from '../storage';
 
 export default class Tool extends Component {
 
@@ -19,14 +18,8 @@ export default class Tool extends Component {
     }
 
     async componentWillMount() {
-        let user = readUser()
-        if (user && user.accesstoken) {
-            // let res = await api.checkToken(user.accesstoken);
-            window._login = true;
-            this.setState({ user: user });
-        }
-        else {
-            window._login = false;
+        if (window._login) {
+            this.setState({ user: window._user });
         }
     }
 
@@ -42,6 +35,7 @@ export default class Tool extends Component {
                 <img src={user.avatar_url} alt="" className='user-avatar' /> :
                 <i className="fa fa-circle-o-notch"></i>
         }
+            { /** <span className='dot' /> */}
         </button>
     )
 

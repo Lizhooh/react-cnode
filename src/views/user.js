@@ -3,14 +3,13 @@ import { connect } from 'react-redux';
 import { userActions } from '../redux/actions';
 import { Tool } from '../components';
 import Item from '../components/user/item';
-import { readUser, removeUser } from '../storage';
+import { removeUser } from '../storage';
 
 // 用户
 class User extends Component {
 
     async componentWillMount() {
-        let user = readUser();
-        if (!window._login && !(user && user.accesstoken)) {
+        if (!window._login) {
             this.props.history.replace('/login');
         }
     }
@@ -66,8 +65,49 @@ class User extends Component {
         </div>
     )
 
+    renderReadMsgsList = (list, history) => (
+        <div>
+            <p className='make'>已读消息</p>
+            <div className='list'>{
+                list.map((item, index) => (
+                    <Item
+                        item={{
+                            ...item,
+                            title: item.topic.title,
+                            last_reply_at: item.create_at,
+                        }}
+                        key={`read-${index}`}
+                        onClick={e => history.push(`/article/${item.topic.id}`)}
+                        />
+                ))
+            }</div>
+        </div>
+    )
+
+    renderNotReadMsgsList = (list, history) => (
+        <div>
+            <p className='make'>未读消息</p>
+            <div className='list'>{
+                list.map((item, index) => (
+                    <Item
+                        item={{
+                            ...item,
+                            title: item.topic.title,
+                            last_reply_at: item.create_at,
+                        }}
+                        key={`notread-${index}`}
+                        onClick={e => {
+                            history.push(`/article/${item.topic.id}`);
+                            this.props.mark(item.id); // 标记为已读
+                        } }
+                        />
+                ))
+            }</div>
+        </div>
+    )
+
     render() {
-        const { info, stars } = this.props.state;
+        const { info, stars, msgs } = this.props.state;
         const { history } = this.props;
 
         return (
@@ -106,6 +146,8 @@ class User extends Component {
                         {info.recent_replies.length > 0 && this.renderRepliesList(info.recent_replies, history)}
                         {info.recent_topics.length > 0 && this.renderTopicsList(info.recent_topics, history)}
                         {stars.length > 0 && this.renderStarsList(stars, history)}
+                        {msgs.read.length > 0 && this.renderReadMsgsList(msgs.read, history)}
+                        {msgs.notread.length > 0 && this.renderNotReadMsgsList(msgs.notread, history)}
                     </div>
                 </div>
 

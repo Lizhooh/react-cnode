@@ -4,10 +4,7 @@ import { articleActions } from '../redux/actions';
 import { k, startTimeOf } from '../functions';
 import Highlight from '../lib/react-highlight';
 import RepliesList from '../components/article/replies-list';
-import {
-    StaticView,
-    Tool
-} from '../components';
+import { StaticView, Tool } from '../components';
 import SimplemdeEditor from '../lib/react-simplemde';
 
 // 文章页
@@ -16,7 +13,7 @@ class Article extends Component {
     constructor(props) {
         super(props);
         this.state = { showComment: false };
-        this.text = '';
+        this.text = '';     // 记录输入的编辑内容
     }
 
     async componentDidMount() {
@@ -31,11 +28,13 @@ class Article extends Component {
 
     onCreateComment = async e => {
         await this.props.createComment(this.text);
+        // clear
         this.simplemde.value('');
+        this.text = '';
     }
 
     renderEditor = () => (
-        <div className='view-container' id='comment-editor'>
+        <StaticView className='view-container' id='comment-editor'>
             <p className='title'>回复</p>
             <div className='editor-container'>
                 <SimplemdeEditor
@@ -48,7 +47,7 @@ class Article extends Component {
             <div style={{ float: 'left', padding: 15 }}>
                 <button onClick={this.onCreateComment}>回复</button>
             </div>
-        </div>
+        </StaticView>
     )
 
     renderReplies = (replies) => (
@@ -67,17 +66,13 @@ class Article extends Component {
 
         if (id !== this.props.match.params.id) data = {};
 
-        console.log(window._login);
-
         return (
             <div className='article-container'>
                 {/* 文章 */}
                 <div className='view-container article' id='article'>
                     <div className='header'>
                         <div className='star' title='收藏' onClick={this.onStar}>{
-                            star ?
-                                <i className="material-icons">&#xE87D;</i> :
-                                <i className="material-icons">&#xE87E;</i>
+                            <i className={`fa ${star ? 'fa-heart' : 'fa-heart-o'}`} />
                         }</div>
                         <h2 className='title'>{data.title}</h2>
                         <div className='info'>
@@ -108,11 +103,11 @@ class Article extends Component {
                     <Tool history={history} back={true}
                         edit={window._login}
                         onEdit={e => {
-                        let d = document.querySelector('#comment-editor');
-                        if (d !== null) {
-                            document.body.scrollTop = d.getBoundingClientRect().bottom;
-                        }
-                    } } />
+                            let d = document.querySelector('#comment-editor');
+                            if (d !== null) {
+                                document.body.scrollTop = d.getBoundingClientRect().bottom;
+                            }
+                        } } />
                 </StaticView>
             </div>
         );

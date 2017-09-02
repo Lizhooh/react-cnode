@@ -13,6 +13,10 @@ const API = {
     star: `${prefix}/topic_collect/collect`,
     unstar: `${prefix}/topic_collect/de_collect`,
     createComment: `${prefix}/topic/:id/replies`,
+    messageCount: `${prefix}/message/count`,
+    messages: `${prefix}/messages`,
+    messageMarkAll: `${prefix}/message/mark_all`,
+    messageMark: `${prefix}/message/mark_one/:id`,
 };
 
 export default {
@@ -24,6 +28,22 @@ export default {
             tab: type,
             limit,
             page,
+        }
+    }),
+
+    /**
+     * 新建主题
+     *  tab: 'ask', 'share', 'job', 'dev',
+     */
+    createTopic: (title, tab, content, tk) => post(API.topics, {
+        data: {
+            accesstoken: tk,
+            title,
+            tab,
+            content,
+        },
+        headers: {
+            "content-type": "application/x-www-form-urlencoded",
         }
     }),
 
@@ -40,7 +60,6 @@ export default {
             }
         })
     },
-
 
     /**
      * 用户信息
@@ -110,5 +129,56 @@ export default {
         })
     },
 
+    /**
+     * 获取未读消息数
+     */
+    messageCount: (tk) => {
+        return get(API.messageCount, {
+            query: {
+                accesstoken: tk,
+            }
+        });
+    },
 
+    /**
+     * 已读或未读消息
+     */
+    messages: () => {
+        const tk = (readUser() || {}).accesstoken;
+        return get(API.messages, {
+            query: {
+                accesstoken: tk,
+            }
+        })
+    },
+
+    /**
+     * 全部标记为已读
+     */
+    messageMarkAll: () => {
+        const tk = (readUser() || {}).accesstoken;
+        return post(API.messageMarkAll, {
+            data: {
+                accesstoken: tk,
+            },
+            headers: {
+                "content-type": "application/x-www-form-urlencoded",
+            }
+        })
+    },
+
+    /**
+     * 单个标记为已读
+     */
+    messageMark: (id) => {
+        const tk = (readUser() || {}).accesstoken;
+        return post(API.messageMark.replace(/:id/, id), {
+            data: {
+                accesstoken: tk,
+            },
+            headers: {
+                "content-type": "application/x-www-form-urlencoded",
+            }
+        })
+    }
 };

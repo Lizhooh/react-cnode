@@ -1,6 +1,4 @@
 
-
-
 function startTimeOf(time = '2017-08-30T03:28:11.446Z') {
 
     const _time = new Date(time).getTime();
@@ -35,6 +33,6 @@ function startTimeOf(time = '2017-08-30T03:28:11.446Z') {
 }
 
 console.log(
-startTimeOf()
+    startTimeOf()
 
 )
