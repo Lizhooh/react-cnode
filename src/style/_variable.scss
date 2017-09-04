@@ -1,9 +1,17 @@
 
-@mixin media($width: 480px) {
-    @media screen and (max-width: $width) {
-        @content;
+@mixin media($width: 480px, $min: false) {
+    @if $min {
+        @media screen and (min-width: $width) {
+            @content;
+        }
+    }
+    @else {
+        @media screen and (max-width: $width) {
+            @content;
+        }
     }
 }
+
 
 $home-body-max-width: 960px;
 $home-body-min-width: 360px;

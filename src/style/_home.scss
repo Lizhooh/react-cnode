@@ -126,9 +126,21 @@
         z-index: 2;
         border-radius: 2px;
         padding: 0 0 20px;
+        animation: home_start .52s ease;
+        animation-fill-mode: forwards;
+        @keyframes home_start {
+            0% {
+                transform: translateY(0px);
+            }
+
+            100% {
+                transform: translateY(-70px);
+            }
+        }
         @include media(480px) {
             & {
                 box-shadow: none;
+                animation: none;
             }
         }
     }

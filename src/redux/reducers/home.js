@@ -20,6 +20,7 @@ export default (state = init_state, action) => {
             tag: action.tag,
             scrollIndex: 0,
             restore: false,
+            showNext: false,
             active: action.active || state.active,
         }
 
