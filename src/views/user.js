@@ -4,6 +4,7 @@ import { userActions } from '../redux/actions';
 import { Tool } from '../components';
 import Item from '../components/user/item';
 import { removeUser } from '../storage';
+import { StaticView, Footer } from '../components';
 
 // 用户
 class User extends Component {
@@ -151,7 +152,10 @@ class User extends Component {
                     </div>
                 </div>
 
-                <Tool history={history} user={!!0} edit={!!0} back={!!1} />
+                <StaticView>
+                    <Tool history={history} user={!!0} edit={!!0} back={!!1} />
+                    <Footer />
+                </StaticView>
             </div>
         );
     }

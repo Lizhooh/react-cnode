@@ -1,0 +1,32 @@
+.footer-container {
+    // height: 120px;
+    margin-top: 50px;
+    @include media(720px) {
+        & {
+            margin-top: 0;
+        }
+    }
+    background-color: $theme-color;
+    box-sizing: content-box;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    .text {
+        justify-content: center;
+        color: #fff;
+        flex: 1;
+        padding: 25px 10px;
+    }
+
+    .right {
+        margin: 0;
+        background-color: rgba(1, 1, 1, 0.04);
+        color: #fff;
+        padding: 8px 0;
+    }
+
+    p {
+        margin: 0;
+    }
+}

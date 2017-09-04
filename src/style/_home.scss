@@ -2,31 +2,110 @@
     min-height: 500px;
 
     .header-container {
-        height: 360px;
+        height: 300px;
         display: flex;
+        background-color: darken($theme-color, 5%);
+        flex-direction: column;
 
-        .header {
-            display: flex;
-            flex: 1;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(1, 1, 1, 0.35);
-            text-align: center;
+        .top {
+            height: 45px;
 
-            img.logo {
-                max-width: 240px;
+            .about {
+                text-align: center;
+                background-color: rgba(1, 1, 1, 0.04);
+                float: right;
+                color: #fff;
+                padding: 10px 16px 10px 17px;
+                cursor: pointer;
+                border-bottom-left-radius: 3px;
+                position: relative;
+                z-index: 1;
+
+                &:hover {
+                    background-color: rgba(1, 1, 1, 0.6);
+                    transition: all .3s ease;
+
+                    & > .box {
+                        overflow: auto;
+                        min-height: 120px;
+                        width: 200px;
+                    }
+                }
             }
 
+            .box {
+                width: 0;
+                height: 0;
+                display: flex;
+                overflow: hidden;
+
+                p {
+                    margin-top: 20px;
+                }
+            }
+        }
+
+        .search-view {
+            position: relative;
+
+            i {
+                color: rgba(1, 1, 1, 0.35);
+                position: absolute;
+                right: 30px;
+                top: 5px;
+                font-weight: normal;
+            }
+        }
+
+        .content {
+            flex: 1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            padding: 10px 10px 20px;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 70px;
+
             .title {
-                text-align: center;
-                color: #f6f6f6;
+                color: #fff;
                 font-size: 36px;
+                display: block;
+                margin: 0 0 5px;
+                text-shadow: 1px 2px 3px rgba(1, 1, 1, 0.18);
+                @include media(480px) {
+                    & {
+                        font-size: 28px;
+                    }
+                }
+            }
+
+            .subtitle {
+                color: #fff;
+                font-size: 15px;
+                color: #f1f1f1;
+                display: block;
+                margin: 0 0 5px;
+                @include media(480px) {
+                    & {
+                        font-size: 13px;
+                    }
+                }
+            }
+
+            .search {
+                background-color: rgba(255, 255, 255, 0.9);
+                max-width: 90%;
+                width: 420px;
+                padding: 6px 12px;
+                color: #444;
+                margin: 0;
             }
         }
     }
 
     .body {
-        transform: translateY(-100px);
+        transform: translateY(-70px);
         width: 100%;
         max-width: $home-body-max-width;
         min-width: $home-body-min-width;
@@ -51,6 +130,9 @@
         cursor: default;
         background-color: #fff;
         align-items: center;
+        border-bottom: 1px solid $theme-color;
+        background-color: $theme-color;
+        color: #fff;
 
         & > div {
             flex: 1;
@@ -146,8 +228,8 @@
                 }
 
                 .avatar {
-                    width: 55px;
-                    height: 55px;
+                    width: 50px;
+                    height: 50px;
                     border-radius: 100%;
                     margin: 4px;
                     box-shadow: 0 2px 4px 1px rgba(1, 1, 1, 0.15);

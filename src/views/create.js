@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SimplemdeEditor from '../lib/react-simplemde';
-import { Tool, StaticView } from '../components';
+import { Tool, StaticView, Footer } from '../components';
 import api from '../api';
 
 export default class Cteate extends Component {
@@ -22,7 +22,7 @@ export default class Cteate extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         if (!window._login && !(window._user && window._user.accesstoken)) {
             this.props.history.replace('/login');
         }
@@ -96,6 +96,7 @@ export default class Cteate extends Component {
 
                 <StaticView>
                     <Tool history={history} edit={!!0} back={!!1} />
+                    <Footer />
                 </StaticView>
             </div>
         );

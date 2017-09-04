@@ -45,6 +45,10 @@ export default class Tool extends Component {
         </button>
     )
 
+    onTop = e => {
+        document.body.scrollTop = 0
+    }
+
     render() {
         const { back, edit, user, history, onEdit } = this.props;
         const { user: _user } = this.state;
@@ -57,11 +61,8 @@ export default class Tool extends Component {
                     {user && this.renderUser(history, _user)}
                     {edit && this.renderEdit(onEdit)}
 
-                    <button
-                        onClick={e => document.body.scrollTop = 0}
-                        onTouchEnd={e => document.body.scrollTop = 0}
-                        >
-                        <i className="fa fa-chevron-up"></i>
+                    <button onClick={this.onTop} onTouchEnd={this.onTop}>
+                        <i className="fa fa-chevron-up top"></i>
                     </button>
                 </div>
             </div>

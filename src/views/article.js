@@ -4,7 +4,7 @@ import { articleActions } from '../redux/actions';
 import { k, startTimeOf } from '../functions';
 import Highlight from '../lib/react-highlight';
 import RepliesList from '../components/article/replies-list';
-import { StaticView, Tool } from '../components';
+import { StaticView, Tool, Footer } from '../components';
 import SimplemdeEditor from '../lib/react-simplemde';
 
 // 文章页
@@ -94,7 +94,7 @@ class Article extends Component {
                 {/* 评论 */}
                 {showComment &&
                     <div>
-                        {this.renderReplies(replies)}
+                        {replies.length > 0 && this.renderReplies(replies)}
                         {window._login && this.renderEditor()}
                     </div>
                 }
@@ -108,6 +108,7 @@ class Article extends Component {
                                 document.body.scrollTop = d.getBoundingClientRect().bottom;
                             }
                         } } />
+                    <Footer />
                 </StaticView>
             </div>
         );

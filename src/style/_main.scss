@@ -113,3 +113,25 @@ input[type='text'] {
 .fa {
     font-size: 20px;
 }
+
+
+.view-container {
+    width: 100%;
+    max-width: $article-body-max-width;
+    min-width: $article-body-min-width;
+    min-height: 200px;
+    background-color: #fff;
+    margin: 0 auto;
+    box-shadow: 0 10px 20px rgba(1, 1, 1, 0.18);
+    overflow-x: hidden;
+    border-bottom: 8px solid darken($theme-color, 5%);
+
+    > .title {
+        text-align: center;
+        background-color: $theme-color;
+        padding: 10px 0;
+        margin: 0;
+        color: #fff;
+        font-size: 16px;
+    }
+}

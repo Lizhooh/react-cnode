@@ -5,6 +5,7 @@ import { TopicType, TopicList, Header } from '../components/home';
 import {
     Tool,
     StaticView,
+    Footer,
 } from '../components';
 import { scrollInfo as s } from '../functions';
 
@@ -20,7 +21,7 @@ class Home extends Component {
 
     onScroll = e => {
         // 加载更多
-        if (s.t() + s.h() >= 0.8 * s.H()
+        if (s.t() + s.h() >= 0.75 * s.H()
             && this.loading === false
             && !this.props.state.showNext) {
             this.onMore();
@@ -86,7 +87,8 @@ class Home extends Component {
                 </div>
 
                 <StaticView>
-                    <Tool history={history} onEdit={e => history.push('/create')}/>
+                    <Tool history={history} onEdit={e => history.push('/create')} />
+                    <Footer />
                 </StaticView>
             </div>
         );

@@ -1,5 +1,5 @@
 .create-container {
-    padding: 50px 0;
+    padding: 50px 0 0;
     @include media(720px) {
         & {
             padding: 0;
@@ -7,11 +7,20 @@
     }
 
     .CodeMirror {
-        min-height: 270px !important;
+        min-height: 400px !important;
     }
 
     .CodeMirror-scroll {
-        min-height: 270px !important;
+        min-height: 400px !important;
+    }
+    @include media(480px) {
+        .CodeMirror {
+            min-height: 270px !important;
+        }
+
+        .CodeMirror-scroll {
+            min-height: 270px !important;
+        }
     }
 
     .header {
@@ -47,7 +56,7 @@
 
             input[type='text'] {
                 padding: 4px 8px;
-                max-width: 600px;
+                // max-width: 600px;
                 width: calc(100% - 100px);
                 color: #333;
                 border: none;
