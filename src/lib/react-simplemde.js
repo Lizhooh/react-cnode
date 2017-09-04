@@ -21,27 +21,26 @@ export default class ReactSimplemde extends Component {
         this.$$ = (select, ctx = document) => Array.from(ctx.querySelectorAll(select));
     }
 
+    // 更新 props 时
+    componentWillReceiveProps(nextProps) {
+        if (!this.state.keyChange &&
+            (nextProps.value !== this.simplemde.value())) {
+            // 刷新其值
+            this.simplemde.value(nextProps.value);
+        }
+
+        this.setState({ keyChange: false });
+    }
+
     componentWillMount() {
         const id = this.props.id;
         this.id = id ? id : `editor-${Date.now()}-${i++}`;
     }
 
     componentDidMount() {
-        this.createEditor();
-        this.addEvents();
-        this.addExtraKeys();
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (!this.state.keyChange &&
-            (nextProps.value !== this.simplemde.value())) {
-            // 刷新值
-            this.simplemde.value(nextProps.value);
-        }
-
-        this.setState({
-            keyChange: false
-        });
+        this.createEditor();     // 创建
+        this.addEvents();        // 监听相关事件
+        this.addExtraKeys();     // 添加自定义的快捷键
     }
 
     componentWillUnmount() {
@@ -155,24 +154,26 @@ export default class ReactSimplemde extends Component {
         // 监听输入事件，回调给 onChange
         this.editorEl.removeEventListener('keyup', this.eventWrapper);
         this.editorToolbarEl &&
-            this.editorToolbarEl.removeEventListener('click', this.eventWrapper);
+        this.editorToolbarEl.removeEventListener('click', this.eventWrapper);
     }
 
     // 增加监听
     addEvents = () => {
-        const wrapperId = `${this.id}-wrapper`;
-        const wrapperEl = this.$(`#${wrapperId}`);
+        const wrapperEl = this.$(`#${this.id}-wrapper`);
 
         this.editorEl = this.$('.CodeMirror', wrapperEl);
         this.editorToolbarEl = this.$('.editor-toolbar', wrapperEl);
 
+        // 文字输入
         this.editorEl.addEventListener('keyup', this.eventWrapper);
+        // 点击工具栏
         this.editorToolbarEl &&
-            this.editorToolbarEl.addEventListener('click', this.eventWrapper);
+        this.editorToolbarEl.addEventListener('click', this.eventWrapper);
     }
 
     addExtraKeys() {
         // https://codemirror.net/doc/manual.html#option_extraKeys
+        // 可以用于编辑指定额外的自定义快捷键绑定。应该是 null，或者是一个有效的键映射值。
         if (this.props.extraKeys) {
             this.simplemde.codemirror.setOption(
                 'extraKeys',

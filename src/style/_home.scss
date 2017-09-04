@@ -20,6 +20,7 @@
                 border-bottom-left-radius: 3px;
                 position: relative;
                 z-index: 1;
+                cursor: default;
 
                 &:hover {
                     background-color: rgba(1, 1, 1, 0.6);
@@ -27,9 +28,15 @@
 
                     & > .box {
                         overflow: auto;
-                        min-height: 120px;
+                        min-height: 100px;
                         width: 200px;
                     }
+                }
+
+                a {
+                    color: #fff;
+                    font-weight: bold;
+                    border-bottom: 1px dotted #fff;
                 }
             }
 
@@ -38,22 +45,11 @@
                 height: 0;
                 display: flex;
                 overflow: hidden;
+                cursor: default;
 
                 p {
                     margin-top: 20px;
                 }
-            }
-        }
-
-        .search-view {
-            position: relative;
-
-            i {
-                color: rgba(1, 1, 1, 0.35);
-                position: absolute;
-                right: 30px;
-                top: 5px;
-                font-weight: normal;
             }
         }
 
@@ -93,13 +89,27 @@
                 }
             }
 
-            .search {
-                background-color: rgba(255, 255, 255, 0.9);
-                max-width: 90%;
-                width: 420px;
-                padding: 6px 12px;
-                color: #444;
-                margin: 0;
+            .search-view {
+                position: relative;
+                max-width: 100%;
+
+                .search {
+                    background-color: rgba(255, 255, 255, 0.9);
+                    max-width: 90%;
+                    width: 420px;
+                    padding: 6px 12px;
+                    color: #444;
+                    margin: 0;
+                    box-sizing: border-box;
+                }
+
+                i {
+                    color: rgba(1, 1, 1, 0.35);
+                    position: absolute;
+                    right: 30px;
+                    top: 5px;
+                    font-weight: normal;
+                }
             }
         }
     }

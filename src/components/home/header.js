@@ -1,7 +1,7 @@
 import React from 'react';
 // import bg from '../../resource/background.jpg';
 
-let logourl = 'http://o4j806krb.qnssl.com/public/images/cnodejs_light.svg'
+// let logourl = 'http://o4j806krb.qnssl.com/public/images/cnodejs_light.svg'
 
 export default ({ title = '' }) => (
     <header className='header-container'>
@@ -10,7 +10,7 @@ export default ({ title = '' }) => (
             <span className='about'>关于
                 <div className='box'>
                     <p>
-                        Api 由 <a href='https://cnodejs.org/api'> cnode </a> 提供，
+                        Api 由 <a href='https://cnodejs.org/api'> cnode </a> 官网提供，
                         客户端由 <a href='http://me.lizhooh.com'>@Lizhooh</a> 提供.
                     </p>
                 </div>

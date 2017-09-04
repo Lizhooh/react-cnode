@@ -16,8 +16,6 @@ import NotFound from '../views/notfound';
 import Login from '../views/login';
 import Create from '../views/create';
 
-import Footer from '../components/footer';
-
 export default class App extends Component {
 
     constructor(props) {
