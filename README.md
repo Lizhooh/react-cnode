@@ -1,12 +1,14 @@
 ## react-cnode
 使用 React 开发的一个 SPA 应用，支持 PWA 特性。
+<br />
 简洁风格的 CNode 中文社区客户端，一切只为阅读。
-Api 由 CNode 官网提供， 客户端由 @Lizhooh 提供.
+<br />
+Api 由 CNode 官网提供。
 
 
 相关技术： HTML5，CSS3，Sass，ES6，React，React-Router，Redux 等，
 
-PS：支持响应式，不兼容没人爱的 IE。
+**PS：**支持响应式，不兼容没人爱的 IE。
 
 线上地址：[https://lizhooh.coding.me/](https://lizhooh.coding.me/)
 
