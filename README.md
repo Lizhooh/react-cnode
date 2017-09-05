@@ -13,7 +13,7 @@ PS：支持响应式，不兼容没人爱的 IE。
 线上地址：[https://lizhooh.coding.me/](https://lizhooh.coding.me/)
 
 
-![](./resource/20170905122827.png)
+![](./resource/20170905124343.png)
 
 ## use
 
