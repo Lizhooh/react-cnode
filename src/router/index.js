@@ -30,12 +30,11 @@ export default class App extends Component {
                 <Router>
                     <Switch>
                         <Route exact path="/" component={Home} />
-                        <Route exact path="/home" component={Home} />
                         <Route exact path="/article/:id" component={Article} />
                         <Route exact path="/user/:id?" component={User} />
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/create" component={Create} />
-                        <Redirect from="/*" to="/home" />
+                        <Redirect from="/*" to="/" />
                         <Route component={NotFound} />
                     </Switch>
                 </Router>

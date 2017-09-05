@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import api from '../api';
 import { saveUser } from '../storage';
-import { Tool } from '../components';
+import { Tool, Footer, StaticView } from '../components';
 
 export default class Login extends Component {
 
@@ -14,6 +14,7 @@ export default class Login extends Component {
     }
 
     onClick = async e => {
+        const { history } = this.props;
         if (this.text !== '') {
             // 检验
             const res = await api.checkToken(this.text);
@@ -29,7 +30,11 @@ export default class Login extends Component {
                     timestamp: Date.now(),
                 });
                 window._login = true;
-                this.props.history.replace(`/user/${res.loginname}`);
+
+                if (history.length <= 2) {
+                    history.push(`/`);
+                }
+                history.replace(`/user/${res.loginname}`);
             }
         }
     }
@@ -61,7 +66,10 @@ export default class Login extends Component {
                         </div>
                     </header>
                 </div>
-                <Tool history={history} back={true} edit={!!0} user={!!0} />
+                <StaticView>
+                    <Tool history={history} back={true} edit={!!0} user={!!0} />
+                    <Footer />
+                </StaticView>
             </div>
         );
     }

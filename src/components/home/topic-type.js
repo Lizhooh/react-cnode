@@ -21,8 +21,8 @@ export default class TopicType extends Component {
         this.props.onSelectTag &&
             this.props.onSelectTag(item, index);
     }
-
     render() {
+
         const { tags, active} = this.state;
         const { className } = this.props;
 

@@ -90,6 +90,7 @@ class Home extends Component {
                     <Tool history={history} onEdit={e => history.push('/create')} />
                     <Footer />
                 </StaticView>
+
             </div>
         );
     }

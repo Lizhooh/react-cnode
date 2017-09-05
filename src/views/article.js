@@ -108,8 +108,8 @@ class Article extends Component {
                                 document.body.scrollTop = d.getBoundingClientRect().bottom;
                             }
                         } } />
-                    <Footer />
                 </StaticView>
+                <Footer />
             </div>
         );
     }

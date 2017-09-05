@@ -7,21 +7,22 @@
     }
 
     .CodeMirror {
-        min-height: 400px !important;
+        min-height: 270px !important;
     }
 
     .CodeMirror-scroll {
-        min-height: 400px !important;
+        min-height: 270px !important;
     }
-    @include media(480px) {
-        .CodeMirror {
-            min-height: 270px !important;
-        }
 
-        .CodeMirror-scroll {
-            min-height: 270px !important;
-        }
-    }
+    // @include media(480px) {
+    //     .CodeMirror {
+    //         min-height: 270px !important;
+    //     }
+
+    //     .CodeMirror-scroll {
+    //         min-height: 270px !important;
+    //     }
+    // }
 
     .header {
         padding: 10px 0;
