@@ -8,10 +8,11 @@ Api 由 CNode 官网提供。
 
 相关技术： HTML5，CSS3，Sass，ES6，React，React-Router，Redux 等，
 
-**PS：**支持响应式，不兼容没人爱的 IE。
+PS：支持响应式，不兼容没人爱的 IE。
 
 线上地址：[https://lizhooh.coding.me/](https://lizhooh.coding.me/)
 
+<br />
 ![](./resource/20170905122827.png)
 
 ## use
