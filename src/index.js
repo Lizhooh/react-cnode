@@ -5,6 +5,9 @@ import App from './router';
 import registerServiceWorker from './registerServiceWorker';
 import { readUser } from './storage';
 
+// import Perf from 'react-addons-perf';
+// window.Perf = Perf;
+
 (() => {
     window._login = false;
     let user = readUser();

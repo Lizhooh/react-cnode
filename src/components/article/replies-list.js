@@ -1,11 +1,12 @@
 import React from 'react';
 import { startTimeOf } from '../../functions';
 import Highlight from '../../lib/react-highlight';
+import { StaticView } from '../index';
 
 export default ({ list }) => (
     <div className='replies-list'>{
         list.map((item, index) => (
-            <div key={`replies-${index}`} className='replies-item'>
+            <StaticView key={`replies-${index}`} className='replies-item'>
                 <img src={item.author.avatar_url} alt='' className='avatar' />
 
                 <div className='content-view'>
@@ -17,7 +18,7 @@ export default ({ list }) => (
                         {item.content || ''}
                     </Highlight>
                 </div>
-            </div>
+            </StaticView>
         ))
     }</div>
 )
