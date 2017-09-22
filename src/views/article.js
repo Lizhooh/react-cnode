@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { articleActions } from '../redux/actions';
 import { k, startTimeOf } from '../functions';
-import Highlight from '../lib/react-highlight';
 import RepliesList from '../components/article/replies-list';
 import { StaticView, Tool, Footer } from '../components';
-import SimplemdeEditor from '../lib/react-simplemde';
+import { SimplemdeEditor, Highlight } from '../lib';
+
 
 // 文章页
 class Article extends Component {

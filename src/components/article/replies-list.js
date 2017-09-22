@@ -1,7 +1,7 @@
 import React from 'react';
 import { startTimeOf } from '../../functions';
-import Highlight from '../../lib/react-highlight';
 import { StaticView } from '../index';
+import { Highlight } from '../../lib';
 
 export default ({ list }) => (
     <div className='replies-list'>{

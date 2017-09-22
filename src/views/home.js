@@ -58,7 +58,9 @@ class Home extends Component {
 
     onNext = e => {
         document.body.scrollTop = 0;
-        this.props.next();
+        setTimeout(() => {
+            this.props.next();
+        }, 100);
     }
 
     render() {
