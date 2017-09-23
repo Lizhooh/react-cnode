@@ -12,7 +12,7 @@ export default (loadComponent) => (
 
         // 异步加载
         componentWillMount() {
-            if (this.hasLoadedComponent()) {
+            if (this.state.Component !== null) {
                 return;
             }
 
@@ -25,11 +25,6 @@ export default (loadComponent) => (
                     console.error(`Cannot load component in <AsyncComponent />`);
                     throw err;
                 });
-        }
-
-        // 已经加载过
-        hasLoadedComponent() {
-            return this.state.Component !== null;
         }
 
         render() {
