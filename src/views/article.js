@@ -105,6 +105,7 @@ class Article extends Component {
                         onEdit={e => {
                             let d = document.querySelector('#comment-editor');
                             if (d !== null) {
+                                document.documentElement.scrollTop =
                                 document.body.scrollTop = d.getBoundingClientRect().bottom;
                             }
                         } } />

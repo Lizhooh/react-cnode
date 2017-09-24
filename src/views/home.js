@@ -36,6 +36,7 @@ class Home extends Component {
         this.loading = true;
         await this.props.init()
         // 回到过去
+        document.documentElement.scrollTop =
         document.body.scrollTop = this.props.state.scrollIndex;
         this.loading = false;
     }
@@ -57,6 +58,7 @@ class Home extends Component {
     }
 
     onNext = e => {
+        document.documentElement.scrollTop =
         document.body.scrollTop = 0;
         setTimeout(() => {
             this.props.next();

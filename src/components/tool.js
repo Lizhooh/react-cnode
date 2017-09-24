@@ -46,6 +46,7 @@ export default class Tool extends Component {
     )
 
     onTop = e => {
+        document.documentElement.scrollTop =
         document.body.scrollTop = 0
     }
 
