@@ -1,6 +1,6 @@
 import { nprogress } from '../../functions';
 
-function parse(query) {
+function stringify(query) {
     let arr = [];
     for (let i in query) {
         arr.push(`${i}=${query[i]}`);
@@ -24,7 +24,7 @@ function _fetch(...arg) {
  * @returns{Promise}
  */
 const _http = (method, url, { query = {}, data = null,  headers = {} } = {}) => {
-    url += '?' + parse(query);
+    url += '?' + stringify(query);
 
     return _fetch(url, {
         method: method,
@@ -34,7 +34,7 @@ const _http = (method, url, { query = {}, data = null,  headers = {} } = {}) => 
             'Connection': 'keep-alive',
             ...headers,
         },
-        body: data && parse(data),
+        body: data && stringify(data),
     })
         .then(res => res.json())
         .catch(err => {

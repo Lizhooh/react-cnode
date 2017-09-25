@@ -35,17 +35,20 @@ export default {
      * 新建主题
      *  tab: 'ask', 'share', 'job', 'dev',
      */
-    createTopic: (title, tab, content, tk) => post(API.topics, {
-        data: {
-            accesstoken: tk,
-            title,
-            tab,
-            content,
-        },
-        headers: {
-            "content-type": "application/x-www-form-urlencoded",
-        }
-    }),
+    createTopic: (title, tab, content, tk) => {
+        content += "\n\n- [From PWA CNode]('https://lizhooh.coding.me/')";
+        return post(API.topics, {
+            data: {
+                accesstoken: tk,
+                title,
+                tab,
+                content,
+            },
+            headers: {
+                "content-type": "application/x-www-form-urlencoded",
+            }
+        })
+    },
 
     /**
      * 文章信息
@@ -117,6 +120,7 @@ export default {
      * 新建评论
      */
     createComment: (id, content) => {
+        content += "\n\n[From PWA CNode]('https://lizhooh.coding.me/')";
         const tk = (readUser() || {}).accesstoken;
         return post(API.createComment.replace(/:id/, id), {
             data: {
@@ -127,7 +131,8 @@ export default {
                 "content-type": "application/x-www-form-urlencoded",
             }
         })
-    },
+    }
+    ,
 
     /**
      * 获取未读消息数
