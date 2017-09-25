@@ -8,7 +8,8 @@ export default () => (
         <div className='right'>
             <p>
                 Api 由 <a href='https://cnodejs.org/api'> cnode </a> 官网提供，
-                客户端由 <a href='http://me.lizhooh.com'>@Lizhooh</a> 提供.
+                客户端由 <a href='http://me.lizhooh.com'>@Lizhooh</a> 提供，
+                开源在 <a href='https://github.com/Lizhooh/react-cnode'>github</a>上。
             </p>
         </div>
     </div>

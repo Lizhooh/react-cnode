@@ -1,12 +1,28 @@
 import { HOME } from '../types';
 
+function parse(str) {
+    if (str[0] === '?') str = str.slice(1);
+
+    let arr = str.split('&');
+    let params = {};
+
+    for (let i = 0; i < arr.length; i++) {
+        let item = arr[i].split('=');
+        params[item[0]] = item[1];
+    }
+
+    return params;
+}
+// 获取查询字段，决定初始化 tag 类型
+const _tag = parse(window.location.search).tag;
+
 const init_state = {
     list: [],
     page: 1,
-    tag: 'all',
+    tag: _tag || 'all',
     scrollIndex: 0,             // 记录滚动条位置
     restore: false,
-    active: 0,
+    active: ['all', 'good', 'ask', 'shar', 'job'].findIndex(i => i === _tag),
     showNext: false,            // 下一页
 }
 
