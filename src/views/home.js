@@ -34,10 +34,12 @@ class Home extends Component {
 
     async componentDidMount() {
         this.loading = true;
-        await this.props.init();
+        if (this.props.state.list.length === 0) {
+            await this.props.init();
+        }
         // 回到过去
         document.documentElement.scrollTop =
-            document.body.scrollTop = this.props.state.scrollIndex;
+        document.body.scrollTop = this.props.state.scrollIndex;
         this.loading = false;
     }
 
@@ -53,7 +55,7 @@ class Home extends Component {
 
     onClick = item => {
         // 记录滚动条位置
-        this.props.saveScrollIndex(s.h());
+        this.props.saveScrollIndex(s.t());
         this.props.history.push(`/article/${item.id}`);
     }
 
