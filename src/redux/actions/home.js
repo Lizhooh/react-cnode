@@ -2,8 +2,8 @@ import { HOME } from '../types';
 import api from '../../api';
 
 // 初始化
-export const init = (_tag, active) => async (dispatch, getState) => {
-    const { restore, tag} = getState().home;
+export const init = (_tag) => async (dispatch, getState) => {
+    const { restore, tag, active} = getState().home;
     if (restore && active === undefined) return;
 
     const res = await api.topics(_tag || tag, 1);

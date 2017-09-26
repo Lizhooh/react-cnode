@@ -3,6 +3,8 @@ import { readUser } from '../storage';
 
 const prefix = 'https://cnodejs.org/api/v1';
 
+const tail = '\n\n[From PWA CNode](https://lizhooh.coding.me/)';
+
 
 const API = {
     topics: `${prefix}/topics`,
@@ -36,7 +38,7 @@ export default {
      *  tab: 'ask', 'share', 'job', 'dev',
      */
     createTopic: (title, tab, content, tk) => {
-        content += "\n\n- [From PWA CNode]('https://lizhooh.coding.me/')";
+        content += tail;
         return post(API.topics, {
             data: {
                 accesstoken: tk,
@@ -120,7 +122,7 @@ export default {
      * 新建评论
      */
     createComment: (id, content) => {
-        content += "\n\n[From PWA CNode]('https://lizhooh.coding.me/')";
+        content += tail;
         const tk = (readUser() || {}).accesstoken;
         return post(API.createComment.replace(/:id/, id), {
             data: {

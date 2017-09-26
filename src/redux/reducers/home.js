@@ -14,7 +14,7 @@ function parse(str) {
     return params;
 }
 // 获取查询字段，决定初始化 tag 类型
-const _tag = parse(window.location.search).tag;
+const _tag = parse(window.location.search).tag || 'all';
 
 const init_state = {
     list: [],
