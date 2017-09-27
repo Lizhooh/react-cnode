@@ -6,6 +6,7 @@ import {
     Tool,
     StaticView,
     Footer,
+    Loading,
 } from '../components';
 import { scrollInfo as s } from '../functions';
 
@@ -41,10 +42,14 @@ class Home extends Component {
         document.documentElement.scrollTop =
         document.body.scrollTop = this.props.state.scrollIndex;
         this.loading = false;
+        this.loadingView.hide();
     }
 
-    onSelectTag = (item, index) => {
-        this.props.init(item.tag, index);
+    onSelectTag = async (item, index) => {
+        this.loadingView.show();
+        await this.props.init(item.tag, index);
+        await new Promise(rs => setTimeout(rs, 100));
+        this.loadingView.hide();
     }
 
     onMore = async () => {
@@ -59,12 +64,16 @@ class Home extends Component {
         this.props.history.push(`/article/${item.id}`);
     }
 
-    onNext = e => {
-        document.documentElement.scrollTop =
-            document.body.scrollTop = 0;
-        setTimeout(() => {
-            this.props.next();
-        }, 100);
+    onNext = async e => {
+        document.body.scrollTop =
+        document.documentElement.scrollTop = 0;
+
+        await new Promise(rs => setTimeout(rs, 100));
+        this.loadingView.show();
+        await this.props.next();
+        await new Promise(rs => setTimeout(rs, 100));
+        this.loadingView.hide();
+
     }
 
     render() {
@@ -81,6 +90,7 @@ class Home extends Component {
 
                     <StaticView>
                         <TopicType className='tags' onSelectTag={this.onSelectTag} initActive={active} />
+                        <Loading ref={r => this.loadingView = r} initValue={true} />
                     </StaticView>
 
                     <TopicList data={list} onClick={this.onClick} />
