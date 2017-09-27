@@ -5,10 +5,19 @@
     min-height: 100%;
     display: flex;
     flex-direction: column;
-
+    opacity: .2;
     @include media(720px) {
-        & {
-            padding: 0;
+        padding: 0;
+    }
+    animation: article_start .32s ease .1s;
+    animation-fill-mode: forwards;
+    @keyframes article_start {
+        0% {
+            opacity: .2;
+        }
+
+        100% {
+            opacity: 1;
         }
     }
 
@@ -81,9 +90,7 @@
             min-height: 200px;
             transition: all .3s ease;
             @include media(480px) {
-                & {
-                    padding: 15px;
-                }
+                padding: 15px;
             }
             @extend %markdownStyle;
 
@@ -98,12 +105,10 @@
                 box-shadow: 0 0 5px #222 inset;
                 line-height: 1.5;
                 @include media(480px) {
-                    & {
-                        font-size: 13px;
-                        line-height: 1.4;
-                        margin: 24px -15px;
-                        padding: 12px 15px;
-                    }
+                    font-size: 13px;
+                    line-height: 1.4;
+                    margin: 24px -15px;
+                    padding: 12px 15px;
                 }
 
                 code {
@@ -130,9 +135,7 @@
         .replies-list {
             padding: 20px 16px;
             @include media(480px) {
-                & {
-                    padding: 5px 8px 5px 0;
-                }
+                padding: 5px 8px 5px 0;
             }
         }
         // 评论项
@@ -145,9 +148,7 @@
             line-height: 1.4;
             background-color: #fff;
             @include media(480px) {
-                & {
-                    padding: 5px 10px 5px 0;
-                }
+                padding: 5px 10px 5px 0;
             }
 
             blockquote {

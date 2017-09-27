@@ -21,16 +21,13 @@
         .CodeMirror-scroll {
             min-height: 300px;
         }
-
         @include media(480px) {
-            & {
-                .CodeMirror {
-                    min-height: 150px;
-                }
+            .CodeMirror {
+                min-height: 150px;
+            }
 
-                .CodeMirror-scroll {
-                    min-height: 150px;
-                }
+            .CodeMirror-scroll {
+                min-height: 150px;
             }
         }
 

@@ -70,9 +70,7 @@
                 margin: 0 0 5px;
                 text-shadow: 1px 2px 3px rgba(1, 1, 1, 0.18);
                 @include media(480px) {
-                    & {
-                        font-size: 28px;
-                    }
+                    font-size: 28px;
                 }
             }
 
@@ -83,9 +81,7 @@
                 display: block;
                 margin: 0 0 5px;
                 @include media(480px) {
-                    & {
-                        font-size: 13px;
-                    }
+                    font-size: 13px;
                 }
             }
 
@@ -138,10 +134,8 @@
             }
         }
         @include media(480px) {
-            & {
-                box-shadow: none;
-                animation: none;
-            }
+            box-shadow: none;
+            animation: none;
         }
     }
 
@@ -161,9 +155,7 @@
             text-align: center;
             padding: 16px 0;
             @include media(480px) {
-                & {
-                    padding: 12px 0;
-                }
+                padding: 12px 0;
             }
 
             &:hover {
@@ -190,9 +182,7 @@
         justify-content: flex-end;
         padding: 5px 20px 0;
         @include media(480px) {
-            & {
-                justify-content: center;
-            }
+            justify-content: center;
         }
 
         > button {
@@ -244,9 +234,7 @@
                 width: 110px;
                 align-self: flex-start;
                 @include media(480px) {
-                    & {
-                        width: auto;
-                    }
+                    width: auto;
                 }
 
                 .avatar {
@@ -256,11 +244,9 @@
                     margin: 4px;
                     box-shadow: 0 2px 4px 1px rgba(1, 1, 1, 0.15);
                     @include media(480px) {
-                        & {
-                            width: 45px;
-                            height: 45px;
-                            margin: 10px;
-                        }
+                        width: 45px;
+                        height: 45px;
+                        margin: 10px;
                     }
                 }
 
@@ -269,9 +255,7 @@
                     font-size: 12px;
                     padding: 4px 0;
                     @include media(480px) {
-                        & {
-                            display: none;
-                        }
+                        display: none;
                     }
                 }
             }
@@ -290,9 +274,7 @@
                     transition: color .2s ease;
                     word-wrap: break-word;
                     @include media(480px) {
-                        & {
-                            font-size: 14px;
-                        }
+                        font-size: 14px;
                     }
 
                     &:hover {
@@ -322,9 +304,7 @@
                 flex-direction: row;
                 align-items: center;
                 @include media(480px) {
-                    & {
-                        display: none;
-                    }
+                    display: none;
                 }
 
                 .reply,

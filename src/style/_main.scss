@@ -1,4 +1,5 @@
-html, body {
+body,
+html {
     margin: 0;
     padding: 0;
     font-family: $font-default;
@@ -90,10 +91,8 @@ input[type='text'] {
     width: 7px;
     height: 7px;
     @include media(480px) {
-        & {
-            width: 3px;
-            height: 3px;
-        }
+        width: 3px;
+        height: 3px;
     }
 
     &-track-piece {
@@ -121,7 +120,6 @@ input[type='text'] {
     font-size: 20px;
 }
 
-
 .view-container {
     width: 100%;
     max-width: $article-body-max-width;
@@ -132,6 +130,8 @@ input[type='text'] {
     box-shadow: 0 10px 20px rgba(1, 1, 1, 0.18);
     overflow-x: hidden;
     border-bottom: 8px solid darken($theme-color, 5%);
+    position: relative;
+    z-index: 1;
 
     > .title {
         text-align: center;
@@ -140,5 +140,8 @@ input[type='text'] {
         margin: 0;
         color: #fff;
         font-size: 16px;
+    }
+    @include media(480px) {
+        box-shadow: none;
     }
 }

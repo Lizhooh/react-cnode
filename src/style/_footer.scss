@@ -2,9 +2,7 @@
     // height: 120px;
     margin-top: 50px;
     @include media(720px) {
-        & {
-            margin-top: 0;
-        }
+        margin-top: 0;
     }
     background-color: $theme-color;
     box-sizing: content-box;

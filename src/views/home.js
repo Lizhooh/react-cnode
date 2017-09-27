@@ -48,7 +48,7 @@ class Home extends Component {
     onSelectTag = async (item, index) => {
         this.loadingView.show();
         await this.props.init(item.tag, index);
-        await new Promise(rs => setTimeout(rs, 100));
+        await new Promise(rs => setTimeout(rs, 500));
         this.loadingView.hide();
     }
 
@@ -71,9 +71,8 @@ class Home extends Component {
         await new Promise(rs => setTimeout(rs, 100));
         this.loadingView.show();
         await this.props.next();
-        await new Promise(rs => setTimeout(rs, 100));
+        await new Promise(rs => setTimeout(rs, 500));
         this.loadingView.hide();
-
     }
 
     render() {

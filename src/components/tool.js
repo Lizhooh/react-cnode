@@ -24,7 +24,12 @@ export default class Tool extends Component {
     }
 
     renderBack = (history) => (
-        <button className='back' onClick={e => history.goBack()}>
+        <button className='back' onClick={e => {
+            if (history.length <= 2) {
+                return history.replace('/');
+            }
+            history.goBack();
+        } }>
             <i className="fa fa-chevron-left"></i>
         </button>
     )
@@ -47,7 +52,7 @@ export default class Tool extends Component {
 
     onTop = e => {
         document.documentElement.scrollTop =
-        document.body.scrollTop = 0
+            document.body.scrollTop = 0
     }
 
     render() {

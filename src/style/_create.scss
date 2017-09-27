@@ -1,9 +1,7 @@
 .create-container {
     padding: 50px 0 0;
     @include media(720px) {
-        & {
-            padding: 0;
-        }
+        padding: 0;
     }
 
     .CodeMirror {
@@ -13,17 +11,14 @@
     .CodeMirror-scroll {
         min-height: 270px !important;
     }
-
     // @include media(480px) {
     //     .CodeMirror {
     //         min-height: 270px !important;
     //     }
-
     //     .CodeMirror-scroll {
     //         min-height: 270px !important;
     //     }
     // }
-
     .header {
         padding: 10px 0;
 

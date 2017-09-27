@@ -5,10 +5,8 @@
     background-color: transparent;
     z-index: 99;
     @include media(480px) {
-        & {
-            right: 12px;
-            top: calc(100% - 190px);
-        }
+        right: 12px;
+        top: calc(100% - 190px);
     }
 
     .user-avatar {
@@ -81,9 +79,7 @@
         box-shadow: 0 2px 3px #ddd;
         margin: 10px 0;
         @include media(720px) {
-            & {
-                display: none;
-            }
+            display: none;
         }
 
         i {
