@@ -23,8 +23,9 @@ export const more = () => async (dispatch, getState) => {
         if (list.length + res.data.length >= 120) {
             dispatch({ type: HOME.more_success, list: res.data, next: true });
         }
-
-        dispatch({ type: HOME.more_success, list: res.data });
+        else {
+            dispatch({ type: HOME.more_success, list: res.data });
+        }
     }
 }
 
