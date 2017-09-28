@@ -5,20 +5,16 @@
     min-height: 100%;
     display: flex;
     flex-direction: column;
-    opacity: .2;
+    opacity: 0;
     @include media(720px) {
         padding: 0;
     }
+    // 启动动画
     animation: article_start .32s ease .1s;
     animation-fill-mode: forwards;
     @keyframes article_start {
-        0% {
-            opacity: .2;
-        }
-
-        100% {
-            opacity: 1;
-        }
+        0% { opacity: 0; }
+        100% { opacity: 1; }
     }
 
     .article {
@@ -30,6 +26,7 @@
             min-height: 120px;
             position: relative;
 
+            // 收藏
             .star {
                 background-color: transparent;
                 position: absolute;
@@ -62,6 +59,7 @@
                 font-size: 20px;
             }
 
+            // 文章用户信息
             .info {
                 font-size: 14px;
                 color: rgba(255, 255, 255, 0.75);

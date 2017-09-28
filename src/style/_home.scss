@@ -7,9 +7,10 @@
         background-color: darken($theme-color, 5%);
         flex-direction: column;
 
+        // 顶部栏
         .top {
             height: 45px;
-
+            // 关于
             .about {
                 text-align: center;
                 background-color: rgba(1, 1, 1, 0.04);
@@ -52,7 +53,7 @@
                 }
             }
         }
-
+        // 页头内容
         .content {
             flex: 1;
             text-align: center;
@@ -176,6 +177,7 @@
         }
     }
 
+    // 下一页
     .next-view {
         display: flex;
         flex-direction: row;
@@ -201,6 +203,7 @@
         }
     }
 
+    // 列表
     .list-container {
         margin: 0 auto;
 
