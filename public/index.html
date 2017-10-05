@@ -19,16 +19,11 @@
             var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
             reIE.test(userAgent);
             var fIEVersion = parseFloat(RegExp["$1"]);
-            if (fIEVersion == 7) {
-                return 7;
-            } else if (fIEVersion == 8) {
-                return 8;
-            } else if (fIEVersion == 9) {
-                return 9;
-            } else if (fIEVersion == 10) {
-                return 10;
-            } else {
-                return 6;           // IE版本<=7
+            if(fIEVersion > 6 && fIEVersion <= 10) {
+                return fIEVersion;
+            }
+            else {
+                return 6;
             }
         } else if (isEdge) {
             return 'edge';          // edge
@@ -41,7 +36,7 @@
 
     if(IEVersion() !== -1) {
         var text = '检测到你使用的是 IE ' + IEVersion() + ' 内核浏览器，本应用使用了最新的前端技术，为了获得最佳的体验，请使用 Chrome、Opera、Firefox 等现代浏览器打开。';
-        alert(text)
+        alert(text);
     }
   </script>
 
@@ -73,5 +68,6 @@
 
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
-    --></body>
+    -->
+</body>
 </html>

@@ -7,15 +7,15 @@ Api 由 CNode 官网提供。
 
 相关技术： HTML5，CSS3，Sass，ES6，React，React-Router，Redux 等，
 
-PS：支持响应式，不兼容没人爱的 IE。
+**说明：**支持响应式，不兼容没人爱的 IE（作为开发者，我们应该使用 Chrome 内核对不对？）。
 
 **还没添加的功能：**
 - 搜索功能（有空补上）
 - 发表/评论后可修改编辑（有空补上）
 - 消息通知红点点（有空补上）
+- 评论时随意 @ 别人（有空补上）
 
 线上地址：[https://lizhooh.coding.me/](https://lizhooh.coding.me/)
-
 
 ![](./resource/20170905124343.png)
 
