@@ -4,7 +4,8 @@ import { userActions } from '../redux/actions';
 import { Tool } from '../components';
 import Item from '../components/user/item';
 import { removeUser } from '../storage';
-import { StaticView, Footer } from '../components';
+import { Footer } from '../components';
+import StaticView from 'react-static-view';
 
 // 用户
 class User extends Component {

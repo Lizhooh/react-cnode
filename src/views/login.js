@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import api from '../api';
 import { saveUser } from '../storage';
-import { Tool, Footer, StaticView } from '../components';
+import { Tool, Footer } from '../components';
+import StaticView from 'react-static-view';
 
 export default class Login extends Component {
 

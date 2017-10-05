@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import { homeActions } from '../redux/actions';
 import { connect } from 'react-redux';
 import { TopicType, TopicList, Header } from '../components/home';
-import {
-    Tool,
-    StaticView,
-    Footer,
-    Loading,
-} from '../components';
+import { Tool, Footer, Loading } from '../components';
+import StaticView from 'react-static-view';
 import { scrollInfo as s } from '../functions';
 
 // 首页

@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { articleActions } from '../redux/actions';
 import { k, startTimeOf } from '../functions';
 import RepliesList from '../components/article/replies-list';
-import { StaticView, Tool, Footer } from '../components';
+import StaticView from 'react-static-view';
+import { Tool, Footer } from '../components';
 import { SimplemdeEditor, Highlight } from '../lib';
 
 

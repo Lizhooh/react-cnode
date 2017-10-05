@@ -1,6 +1,6 @@
 import React from 'react';
 import { startTimeOf } from '../../functions';
-import { StaticView } from '../index';
+import StaticView from 'react-static-view';
 import { Highlight } from '../../lib';
 
 export default ({ list }) => (

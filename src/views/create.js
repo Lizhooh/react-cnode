@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Tool, StaticView } from '../components';
+import { Tool } from '../components';
+import StaticView from 'react-static-view';
 import api from '../api';
 import { SimplemdeEditor } from '../lib';
 
