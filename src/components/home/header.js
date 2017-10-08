@@ -1,7 +1,11 @@
 import React from 'react';
-// import bg from '../../resource/background.jpg';
+// site:cnodejs.org
 
-// let logourl = 'http://o4j806krb.qnssl.com/public/images/cnodejs_light.svg'
+let text = '';
+function openSearch(text) {
+    // window.open
+    window.open("https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=0&rsv_idx=1&wd=site%3Acnodejs.org%20" + text);
+}
 
 export default ({ title = '' }) => (
     <header className='header-container'>
@@ -25,8 +29,15 @@ export default ({ title = '' }) => (
             </div>
 
             <div className='search-view'>
-                <input type="text" className='search' placeholder='搜索' />
-                <i className="fa fa-search" />
+                <input type="text" className='search' placeholder='搜索'
+                    onKeyDown={e => {
+                        e.keyCode === 13 && openSearch(e.target.value);
+                    }}
+                    onChange={e => {
+                        text = e.target.value;
+                    }}
+                    />
+                <i className="fa fa-search" onClick={e => openSearch(text)} />
             </div>
         </div>
     </header>

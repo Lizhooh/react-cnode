@@ -32,7 +32,7 @@ export default class TopicType extends Component {
                     <div
                         onClick={e => this.onSelectTag(item, index)}
                         key={`tag-${index}`}
-                        className={active === index && 'active'}
+                        className={`waves-effect waves-button ${active === index && 'active'}`}
                         >
                         {item.name}
                     </div>

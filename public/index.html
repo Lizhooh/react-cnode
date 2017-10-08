@@ -1,15 +1,14 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="theme-color" content="#45c83e">
-  <!--
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#45c83e">
+    <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
-
-  <script>
+    <script>
     function IEVersion() {
         var userAgent = navigator.userAgent;
         var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1;
@@ -19,7 +18,7 @@
             var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
             reIE.test(userAgent);
             var fIEVersion = parseFloat(RegExp["$1"]);
-            if(fIEVersion > 6 && fIEVersion <= 10) {
+            if (fIEVersion > 6 && fIEVersion <= 10) {
                 return fIEVersion;
             }
             else {
@@ -34,16 +33,15 @@
         }
     }
 
-    if(IEVersion() !== -1) {
+    if (IEVersion() !== -1) {
         var text = '检测到你使用的是 IE ' + IEVersion() + ' 内核浏览器，本应用使用了最新的前端技术，为了获得最佳的体验，请使用 Chrome、Opera、Firefox 等现代浏览器打开。';
         alert(text);
     }
-  </script>
-
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-  <link rel="shortcut icon" href="%PUBLIC_URL%/cnode_icon_32.png">
-  <!--<script src="%PUBLIC_URL%/vconsole.min.js"></script>-->
-  <!--
+</script>
+<link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+<link rel="shortcut icon" href="%PUBLIC_URL%/cnode_icon_32.png">
+<!--<script src="%PUBLIC_URL%/vconsole.min.js"></script>-->
+<!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -52,14 +50,16 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-  <title>CNode 专业中文社区</title>
-  <base target="_blank" />
-  <link href="https://cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<title>CNode 专业中文社区</title>
+<base target="_blank" />
+<link href="https://cdn.bootcss.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/node-waves/0.7.5/waves.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/node-waves/0.7.5/waves.min.js"></script>
 </head>
 <body>
-  <noscript> You need to enable JavaScript to run this app. </noscript>
-  <div id="root"></div>
-  <!--
+    <noscript> You need to enable JavaScript to run this app. </noscript>
+    <div id="root"></div>
+    <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -69,5 +69,8 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script type="text/javascript">
+        Waves.displayEffect();
+    </script>
 </body>
 </html>
