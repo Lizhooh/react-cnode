@@ -9,7 +9,7 @@ export const init = (_tag) => async (dispatch, getState) => {
     const res = await api.topics(_tag || tag, 1);
 
     if (res && res.success) {
-        dispatch({ type: HOME.init_success, list: res.data, tag, active });
+        dispatch({ type: HOME.init_success, list: res.data, tag: _tag, active });
     }
 }
 
