@@ -5,7 +5,7 @@ export const k = (value) => {
     if (value >= 1000) {
         value += '';
         value = value.substr(0, value.length - 2);
-        return (value / 10).toFixed(1) + 'k';
+        return (value / 10).toFixed(1) + ' k';
     }
     return value;
 };
@@ -20,7 +20,7 @@ export function startTimeOf(time) {
     const _now = Date.now();
 
     const dt = (_now - _time) / 1000 | 0;
-    const dt_second = dt / 1000 | 0;
+    const dt_second = dt | 0;
     const dt_minute = dt / 60 | 0;
     const dt_hour = dt / 3600 | 0;
     const dt_day = dt / 86400 | 0;
