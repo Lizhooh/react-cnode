@@ -14,8 +14,6 @@ Api 由 CNode 官网提供。
 - 消息通知红点点（有空补上）
 - 评论时随意 @ 别人（有空补上）
 
-线上地址：[https://lizhooh.coding.me/](https://lizhooh.coding.me/)
-
 ![](./resource/20170905124343.png)
 
 ## use
