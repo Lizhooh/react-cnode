@@ -17,12 +17,15 @@ class Home extends Component {
     }
 
     onScroll = e => {
-        // 加载更多
-        if (s.t() + s.h() >= 0.75 * s.H()
-            && this.loading === false
-            && !this.props.state.showNext) {
-            this.onMore();
-        }
+        const animationFrame = (cb) => window.requestAnimationFrame(cb) || setTimeout(cb, 50);
+        animationFrame(() => {
+            // 加载更多
+            if (s.t() + s.h() >= 0.75 * s.H()
+                && this.loading === false
+                && !this.props.state.showNext) {
+                this.onMore();
+            }
+        })
     }
 
     componentWillUnmount() {

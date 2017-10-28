@@ -1,3 +1,5 @@
+
+// 主页
 .home-container {
     min-height: 500px;
 
@@ -127,7 +129,7 @@
         animation-fill-mode: forwards;
         @keyframes home_start {
             0% {
-                transform: translateY(0px);
+                transform: translateY(-20px);
             }
 
             100% {
@@ -275,7 +277,8 @@
                     color: #232323;
                     padding-right: 15px;
                     transition: color .2s ease;
-                    word-wrap: break-word;
+                    word-wrap: break-word !important;
+
                     @include media(480px) {
                         font-size: 14px;
                     }

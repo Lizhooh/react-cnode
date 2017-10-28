@@ -1,18 +1,21 @@
 // 加载动画
 .loading {
-    background-color: rgba(255, 255, 255, 0.85);
+    // background-color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(1, 1, 1, 0);
     height: 0;
     width: 100%;
     display: block;
     position: absolute;
     z-index: 1;
-    box-shadow: 1px 2px 30px #ccc;
+    // box-shadow: 1px 2px 30px #ccc;
     transition: all .2s ease-in-out;
     overflow: hidden;
 
     &.show {
         transition: all .1s ease-in-out;
-        height: 70px;
+        // height: 70px;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.35);
     }
 
     .center {

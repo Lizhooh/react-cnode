@@ -1,3 +1,6 @@
+
+
+// 浮动工具
 .fixed-buttons-container {
     position: fixed;
     right: 30px;
@@ -32,7 +35,7 @@
         border-radius: 100%;
         display: block;
         background-color: #f33;
-        box-shadow: 1px 2px 2px #aaa;
+        box-shadow: 1px 2px 2px #aaa !important;
         position: absolute;
         top: 0;
         right: 0;

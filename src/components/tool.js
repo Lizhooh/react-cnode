@@ -35,19 +35,17 @@ export default class Tool extends Component {
     )
 
     renderUser = (history, user) => (
-        <button onClick={e => history.push(`/user/${this.state.user.loginname}`)}
-            className='waves-effect waves-button'
-            >{
-                user.id ?
-                    <img src={user.avatar_url} alt="" className='user-avatar' /> :
-                    <i className="fa fa-circle-o-notch"></i>
-            }
-            { /** <span className='dot' /> */}
+        <button onClick={e => history.push(`/user/${this.state.user.loginname}`)}>{
+            user.id ?
+                <img src={user.avatar_url} alt="" className='user-avatar' /> :
+                <i className="fa fa-circle-o-notch"></i>
+        }
+        { /** <span className='dot' /> */}
         </button>
     )
 
     renderEdit = (onEdit) => (
-        <button onClick={onEdit} className='waves-effect waves-button'>
+        <button onClick={onEdit}>
             <i className="fa fa-pencil" aria-hidden="true"></i>
         </button>
     )
@@ -72,7 +70,6 @@ export default class Tool extends Component {
                     <button
                         onClick={this.onTop}
                         onTouchEnd={this.onTop}
-                        className='waves-effect waves-button'
                         >
                         <i className="fa fa-chevron-up top"></i>
                     </button>
