@@ -19,12 +19,15 @@ Api 由 CNode 官网提供。
 ```bash
 # install module
 npm install
+yarn install
 
 # run project
 npm start
+yarn run start
 
 # build project
 npm run build
+yarn run build
 ```
 
 ## code structure
@@ -48,7 +51,7 @@ src
 ├── storage                  // 本地数据储存相关
 ├── style                    // 所有的 sass
 ├── views                    // 所有视图代码
-├── index.js                 // 应用入口 --> index.android.js
+├── index.js                 // 应用入口
 └── registerServiceWorker.js // Service Worker 相关
 ```
 

@@ -54,90 +54,11 @@ export default class ReactSimplemde extends Component {
             initialValue: this.props.value,
             placeholder: this.props.placeholder,
             autoDownloadFontAwesome: false,
-            // toolbar: [{
-            //     name: "bold",
-            //     action: simplemde.toggleBold,
-            //     className: "material-icons #format_bold",
-            //     title: "Bold",
-            // }, {
-            //     name: "italic",
-            //     action: simplemde.toggleItalic,
-            //     className: "material-icons #format_italic",
-            //     title: "Italic",
-            // },
-            // {
-            //     name: 'heading',
-            //     action: simplemde.toggleHeadingBigger,
-            //     className: 'material-icons #title',
-            //     title: 'Heading',
-            // },
-            // {
-            //     name: 'quote',
-            //     action: simplemde.toggleBlockquote,
-            //     className: 'material-icons #format_quote',
-            //     title: 'Quote',
-            // },
-            // {
-            //     name: 'generic list',
-            //     action: simplemde.toggleUnorderedList,
-            //     className: 'material-icons #format_list_bulleted',
-            //     title: 'Generic List',
-            // },
-            // {
-            //     name: 'numbered list',
-            //     action: simplemde.toggleOrderedList,
-            //     className: 'material-icons #format_list_numbered',
-            //     title: 'Numbered List',
-            // },
-            // {
-            //     name: 'create link',
-            //     action: simplemde.drawLink,
-            //     className: 'material-icons #insert_link',
-            //     title: 'Create Link',
-            // },
-            // {
-            //     name: 'insert image',
-            //     action: simplemde.drawImage,
-            //     className: 'material-icons #insert_photo',
-            //     title: 'Insert Image',
-            // },
-            // {
-            //     name: 'toggle preview',
-            //     action: simplemde.togglePreview,
-            //     className: 'material-icons #visibility',
-            //     title: 'Toggle Preview',
-            // },
-            // // {
-            // //     name: 'toggle side by side',
-            // //     action: simplemde.toggleSideBySide,
-            // //     className: 'material-icons #web',
-            // //     title: 'Toggle Side by Side',
-            // // },
-            // {
-            //     name: 'toggle fullscreen',
-            //     action: simplemde.toggleFullScreen,
-            //     className: 'material-icons #zoom_out_map',
-            //     title: 'Toggle Fullscreen',
-            // },
-            // {
-            //     name: 'markdown guide',
-            //     // action:
-            //     className: 'material-icons #help',
-            //     title: 'Markdown Guide',
-            // },
-            //     // "|", // Separator
-            // ]
         };
 
         const allOptions = Object.assign({}, initialOptions, this.props.options);
         this.simplemde = new simplemde(allOptions);
         this.props.simplemde(this.simplemde);
-
-        // let icons = this.$$('.material-icons').filter(i => i.className.indexOf('#') !== -1);
-
-        // icons.forEach(item => {
-        //     item.innerText = item.className.match(/\#(\w+)/)[1];
-        // });
     }
 
     // 事件回调
