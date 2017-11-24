@@ -7,11 +7,6 @@ Api 由 CNode 官网提供。
 
 相关技术： HTML5，CSS3，Sass，ES6，React，React-Router，Redux 等，
 
-**还没添加的功能：**
-- 发表/评论后可修改编辑
-- 消息通知红点点
-- 评论时随意 @ 别人
-
 ![](./resource/20170905124343.png)
 
 ## use
