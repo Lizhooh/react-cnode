@@ -25,30 +25,5 @@ npm run build
 yarn run build
 ```
 
-## code structure
-
-```js
-src
-├── api                      // 网络请求，后端接口
-│   ├── http                 // 对 http 进行封装
-│   └── index.js             // 导出所有 api
-├── components               // 组件
-├── config                   // 用来放置应用的配置项
-├── functions                // 自定义的一些功能函数，算法
-├── lib                      // 自定义的 React 集成
-├── redux                    // 数据状态管理框架 - redux 相关
-│   ├── actions              // 所有 view 的 action 集中管理
-│   ├── reducers             // 所有 view 的 reducer 集中管理
-│   ├── types.js             // 所有的 action type 集中管理
-│   └── store.js             // create store
-├── resource                 // 资源文件目录
-├── router                   // 路由管理
-├── storage                  // 本地数据储存相关
-├── style                    // 所有的 sass
-├── views                    // 所有视图代码
-├── index.js                 // 应用入口
-└── registerServiceWorker.js // Service Worker 相关
-```
-
 ## explain
 此作品，仅限于个人兴趣与学习。@lizhooh
