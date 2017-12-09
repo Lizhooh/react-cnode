@@ -4,6 +4,8 @@ import './style/app.css';
 import App from './router';
 import registerServiceWorker from './registerServiceWorker';
 import { readUser } from './storage';
+import { ThemeProvider } from 'styled-components';
+import theme from './theme';
 
 // import Perf from 'react-addons-perf';
 // window.Perf = Perf;
@@ -17,5 +19,12 @@ import { readUser } from './storage';
     }
 })();
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <ThemeProvider theme={theme}>
+        <App />
+    </ThemeProvider>
+    ,
+    document.getElementById('root')
+);
+
 registerServiceWorker();

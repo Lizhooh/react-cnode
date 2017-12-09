@@ -14,7 +14,8 @@
     "react-static-view": "^1.1.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "simplemde": "^1.11.2"
+    "simplemde": "^1.11.2",
+    "styled-components": "^2.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
