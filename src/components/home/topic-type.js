@@ -40,5 +40,4 @@ export default class TopicType extends Component {
             }</div>
         );
     }
-
 }

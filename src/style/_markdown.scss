@@ -213,3 +213,7 @@
         margin: 16px auto;
     }
 }
+
+.markdown {
+    @extend %markdownStyle;
+}

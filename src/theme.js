@@ -6,4 +6,6 @@ export default {
         }
     `,
     color: 'rgba(69, 200, 62, 1)',  // 主题颜色
+    fontCode: `'Consolas', 'Courier New', 'monospace', '微软雅黑'`,
 }
+

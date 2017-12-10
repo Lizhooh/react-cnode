@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+import Color from 'color';
 
 export default class Tool extends Component {
 
@@ -17,37 +19,31 @@ export default class Tool extends Component {
         }
     }
 
-    async componentWillMount() {
+    componentWillMount() {
         if (window._login) {
             this.setState({ user: window._user });
         }
     }
 
     renderBack = (history) => (
-        <button className='back waves-effect waves-button' onClick={e => {
-            if (history.length <= 2) {
-                return history.replace('/');
-            }
-            history.goBack();
-        } }>
-            <i className="fa fa-chevron-left"></i>
-        </button>
+        <BackButton onClick={e => history.length <= 2 ? history.replace('/') : history.goBack()}>
+            <Icon type="chevron-left" />
+        </BackButton>
     )
 
     renderUser = (history, user) => (
-        <button onClick={e => history.push(`/user/${this.state.user.loginname}`)}>{
-            user.id ?
-                <img src={user.avatar_url} alt="" className='user-avatar' /> :
-                <i className="fa fa-circle-o-notch"></i>
-        }
-        { /** <span className='dot' /> */}
-        </button>
+        <Button onClick={e => history.push(`/user/${this.state.user.loginname}`)}>
+            {user.id ?
+                <Avatar src={user.avatar_url} /> :
+                <Icon type="circle-o-notch" />
+            }
+        </Button>
     )
 
     renderEdit = (onEdit) => (
-        <button onClick={onEdit}>
-            <i className="fa fa-pencil" aria-hidden="true"></i>
-        </button>
+        <Button onClick={onEdit}>
+            <Icon type="pencil" />
+        </Button>
     )
 
     onTop = e => {
@@ -60,22 +56,97 @@ export default class Tool extends Component {
         const { user: _user } = this.state;
 
         return (
-            <div className='fixed-buttons-container'>
+            <Container>
                 {back && this.renderBack(history)}
-
-                <div className='fixed-right'>
+                <Panel>
                     {user && this.renderUser(history, _user)}
                     {edit && this.renderEdit(onEdit)}
 
-                    <button
+                    <Button
                         onClick={this.onTop}
                         onTouchEnd={this.onTop}
                         >
-                        <i className="fa fa-chevron-up top"></i>
-                    </button>
-                </div>
-            </div>
+                        <Icon type="chevron-up" className="top" />
+                    </Button>
+                </Panel>
+            </Container>
         );
     }
 }
 
+const Container = styled.div`
+    position: fixed;
+    right: 30px;
+    top: calc(100% - 240px);
+    background-color: transparent;
+    z-index: 99;
+
+    ${p => p.theme.media`
+        right: 12px;
+        top: calc(100% - 190px);
+    `}
+`;
+
+const Panel = styled.div`
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+`;
+
+const Avatar = styled.img`
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    &:hover { opacity: .9 }
+`;
+
+const Button = styled.button`
+    position: relative;
+    display: block;
+    border-radius: 100%;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    padding: 1px;
+    transition: all .3s ease;
+    box-shadow: 0 2px 3px rgba(1, 1, 1, 0.2);
+    margin: 5px 0;
+    background-color: ${p => p.theme.color};
+
+    i {
+        font-size: 21px;
+        color: #fff;
+    }
+
+    &:hover {
+        background-color: ${p => Color(p.theme.color).darken(0.1).toString()};
+    }
+
+    .top {
+        position: relative;
+        top: -1px;
+    }
+`;
+
+const BackButton = Button.extend`
+    position: fixed;
+    left: 20px;
+    top: 10px;
+    margin: 10px 0;
+    box-shadow: 0 2px 3px #ddd;
+
+    ${p => p.theme.media(`
+        display: none;
+    `, 720)}
+
+    i {
+        position: relative;
+        left: -1px;
+        top: 1px;
+    }
+`;
+
+const Icon = styled.i.attrs({
+    className: p => `fa fa-${p.type}`,
+}) ``;
