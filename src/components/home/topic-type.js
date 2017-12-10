@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
 export default class TopicType extends Component {
     constructor(props) {
@@ -21,23 +22,45 @@ export default class TopicType extends Component {
         this.props.onSelectTag &&
             this.props.onSelectTag(item, index);
     }
+
     render() {
-
         const { tags, active} = this.state;
-        const { className } = this.props;
-
         return (
-            <div className={className}>{
-                tags.map((item, index) => (
-                    <div
-                        onClick={e => this.onSelectTag(item, index)}
-                        key={`tag-${index}`}
-                        className={`waves-effect waves-button ${active === index && 'active'}`}
-                        >
-                        {item.name}
-                    </div>
-                ))
-            }</div>
+            <Container>{tags.map((item, index) => (
+                <Tag
+                    onClick={e => this.onSelectTag(item, index)}
+                    key={`tag-${index}`}
+                    className={"waves-effect waves-button"}
+                    active={active === index}
+                    >
+                    {item.name}
+                </Tag>
+            ))}
+            </Container>
         );
     }
 }
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    cursor: default;
+    background-color: #fff;
+    align-items: center;
+    border-bottom: 1px solid ${p => p.theme.color};
+    background-color: ${p => p.theme.color};
+    color: #fff;
+`;
+
+const Tag = styled.div`
+    flex: 1;
+    text-align: center;
+    padding: 16px 0;
+    ${p => p.theme.media`padding: 12px 0;`}
+    &:hover { background-color: rgba(1, 1, 1, 0.07) }
+
+    ${p => p.active && `
+        background-color: rgba(1, 1, 1, 0.07);
+    `}
+`;

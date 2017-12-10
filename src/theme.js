@@ -7,5 +7,13 @@ export default {
     `,
     color: 'rgba(69, 200, 62, 1)',  // 主题颜色
     fontCode: `'Consolas', 'Courier New', 'monospace', '微软雅黑'`,
+    body: {
+        maxWidth: '960px',
+        minWidth: '360px',
+        minHeight: '800px',
+    },
+    article: {
+        maxWidth: '900px',
+        minWidth: '360px',
+    },
 }
-

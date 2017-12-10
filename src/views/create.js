@@ -3,6 +3,7 @@ import { Tool } from '../components';
 import StaticView from 'react-static-view';
 import api from '../api';
 import { SimplemdeEditor } from '../lib';
+import styled from 'styled-components';
 
 export default class Cteate extends Component {
 
@@ -23,7 +24,7 @@ export default class Cteate extends Component {
         }
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         if (!window._login && !(window._user && window._user.accesstoken)) {
             this.props.history.replace('/login');
         }
@@ -57,27 +58,32 @@ export default class Cteate extends Component {
         const { history } = this.props;
 
         return (
-            <div className='create-container'>
+            <Container>
                 <div className='view-container'>
                     <p className='title'>创建文章</p>
-                    <div className='header'>
-                        <div className='input-tab'>
-                            <span className='label'>类型：</span>
-                            <div className='tags'>{
-                                tags.map((item, index) => (
-                                    <span key={`tags-${index}`} className='tag'
-                                        onClick={e => this.setState({ select: index })}
-                                        >
-                                        <i className={`fa ${select !== index ? 'fa-square-o' : 'fa-check-square'}`} />
-                                        <span>{item.name}</span>
-                                    </span>
-                                ))
-                            }</div>
+                    <div style={{ padding: '10px 0' }}>
+                        <div style={{ margin: '15px 0' }}>
+                            <Label>类型：</Label>
+                            <TagsPanel>{tags.map((item, index) => (
+                                <span
+                                    key={`tags-${index}`}
+                                    className='tag'
+                                    onClick={e => this.setState({ select: index })}
+                                    >
+                                    <Icon type={select !== index ? 'square-o' : 'check-square'} />
+                                    <span>{item.name}</span>
+                                </span>
+                            ))}
+                            </TagsPanel>
                         </div>
-                        <div className='input-title'>
-                            <span className='label'>标题：</span>
-                            <input type="text" placeholder='标题' onChange={e => this.title = e.target.value} />
-                        </div>
+                        <InputTitlePanel>
+                            <Label>标题：</Label>
+                            <input
+                                type="text"
+                                placeholder='标题'
+                                onChange={e => this.title = e.target.value}
+                                />
+                        </InputTitlePanel>
                     </div>
                     <StaticView className='editor-container'>
                         <SimplemdeEditor
@@ -87,18 +93,80 @@ export default class Cteate extends Component {
                             simplemde={s => this.simplemde = s}
                             />
                     </StaticView>
-                    <div style={{ float: 'left', padding: 15 }}>
+                    <SubmitPanel>
+                        <Message>{msg !== '' && <Icon type="info-circle" />}{msg}</Message>
                         <button onClick={this.onSubmit}>发表</button>
-                        <span className='msg'>{
-                            msg !== '' && <i className="fa fa-info-circle" />
-                        }{msg}</span>
-                    </div>
+                    </SubmitPanel>
                 </div>
-
                 <StaticView>
                     <Tool history={history} edit={!!0} back={!!1} />
                 </StaticView>
-            </div>
+            </Container>
         );
     }
 }
+
+const Container = styled.div`
+    padding: 50px 0 0;
+    ${p => p.theme.media`padding: 0;`}
+
+    .CodeMirror { min-height: 270px !important }
+    .CodeMirror-scroll { min-height: 270px !important }
+`;
+
+const Message = styled.span`
+    margin: 0 15px;
+    font-size: 14px;
+    color: #555;
+
+    i {
+        position: relative;
+        top: 2px;
+        margin-right: 5px;
+        color: #f55;
+    }
+`;
+
+const Icon = styled.i.attrs({
+    className: p => `fa fa-${p.type}`
+}) `
+    color: ${p => p.theme.color};
+    position: relative;
+    top: 2px;
+    right: 5px;
+    font-size: 18px;
+`;
+
+const Label = styled.span`
+    border-left: 4px solid ${p => p.theme.color};
+    padding: 4px 0 4px 10px;
+    box-sizing: content-box;
+    color: #666;
+    font-size: 16px;
+`;
+
+const TagsPanel = styled.div`
+    display: inline;
+
+    .tag {
+        margin: 0 9px;
+        cursor: pointer;
+    }
+`;
+
+const InputTitlePanel = styled.div`
+    margin: 15px 0;
+    input[type='text'] {
+        padding: 4px 8px;
+        width: calc(100% - 100px);
+        color: #333;
+        border: none;
+        border-bottom: 1px solid ${p => p.theme.color};
+        margin-left: 0;
+    }
+`;
+
+const SubmitPanel = styled.div`
+    float: right;
+    padding: 15px;
+`;

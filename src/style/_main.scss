@@ -141,6 +141,7 @@ input[type='text'] {
         color: #fff;
         font-size: 16px;
     }
+
     @include media(480px) {
         box-shadow: none;
     }

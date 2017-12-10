@@ -10,8 +10,8 @@ export default ({ item, onClick = () => { } }) => (
                 {item.author.loginname}
                 <Time>{startTimeOf(item.last_reply_at)}</Time>
             </Name>
+            <Title>{item.title}</Title>
         </Author>
-        <Title>{item.title}</Title>
     </Container>
 );
 

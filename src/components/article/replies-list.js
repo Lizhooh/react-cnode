@@ -14,9 +14,7 @@ export default ({ list }) => (
                         {item.author.loginname}
                         <Time>{startTimeOf(item.create_at)}</Time>
                     </Name>
-                    <Content innerHTML={true} className="markdown">
-                        {item.content || ''}
-                    </Content>
+                    <Content>{item.content || ''}</Content>
                 </ContentPanel>
             </RepliesItem>
         ))
@@ -72,7 +70,10 @@ const ContentPanel = styled.div`
     justify-content: space-around;
 `;
 
-const Content = styled(Highlight) `
+const Content = styled(Highlight).attrs({
+    innerHTML: true,
+    className: 'markdown',
+}) `
     font-size: 14px;
     color: #777;
     overflow: hidden;

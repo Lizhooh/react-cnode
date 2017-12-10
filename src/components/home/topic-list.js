@@ -44,11 +44,11 @@ export default class List extends Component {
                         <NewsPanel>
                             <Reply>
                                 <span>{k(item.reply_count)}</span>
-                                <span className='text'>回复</span>
+                                <Text>回复</Text>
                             </Reply>
                             <Visit>
                                 <span>{k(item.visit_count)}</span>
-                                <span className='text'>浏览</span>
+                                <Text>浏览</Text>
                             </Visit>
                         </NewsPanel>
                     </ListItem>
